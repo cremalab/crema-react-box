@@ -9,7 +9,23 @@ const theme = {
 }
 
 <Box
-  padding='20%'
-  padding={[2, 3]} />
+  backgroundColor={},
+  backgroundImage={},
+  borderColor={},
+  borderWidth={},
+  borderStyle={},
+  borderRadius={},
+  children={},
+  childSpacing={},
+  childLayout={},
+  childAlign={},
+  childWrap={},
+  childJustify={},
+  height={},
+  width={},
+  margin={},
+  opacity={},
+  padding={},
+  theme={} />
   
 ```
