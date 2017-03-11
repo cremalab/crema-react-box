@@ -1,0 +1,64 @@
+{
+  "name": "crema-react-box",
+  "version": "0.0.1",
+  "main": "web.js",
+  "license": "MIT",
+  "scripts": {
+    "build:dist": "rm -rf ./dist/* && webpack --env=prod --progress --profile --colors && npm pack",
+    "build": "rm -rf ./dist/* && webpack --env=dev --progress --profile --colors",
+    "dev": "getstorybook",
+    "start": "start-storybook -p 9001",
+    "build-storybook": "build-storybook",
+    "test": "NODE_ENV=test jest",
+    "test:coverage": "npm run test -- --coverage",
+    "test:watch": "npm run test -- --watch",
+    "test:watch:coverage": "npm run test:coverage -- --watch"
+  },
+  "devDependencies": {
+    "@kadira/storybook": "^2.21.0",
+    "@kadira/storybook-addon-knobs": "^1.7.1",
+    "babel-loader": "^6.2.5",
+    "babel-preset-stage-0": "^6.22.0",
+    "case-sensitive-paths-webpack-plugin": "^1.1.4",
+    "enzyme": "^2.7.1",
+    "eslint": "^3.14.1",
+    "eslint-plugin-react": "^6.9.0",
+    "getstorybook": "^1.7.0",
+    "jest": "^18.1.0",
+    "jest-enzyme": "^2.1.0",
+    "react": "^15.4.2",
+    "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "source-map-loader": "^0.1.6",
+    "webpack": "^2.0.0"
+  },
+  "dependencies": {
+    "styled-components": "^1.0.0"
+  },
+  "peerDependencies": {
+    "react": "^15.0.0"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
+    "moduleDirectories": [
+      "node_modules",
+      "./src"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json"
+    ],
+    "coverageReporters": [
+      "lcov",
+      "text",
+      "text-summary"
+    ],
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ],
+    "moduleNameMapper": {
+      "react-native": "<rootDir>/node_modules/react-native-web"
+    }
+  }
+}

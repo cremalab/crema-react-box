@@ -4,10 +4,6 @@ A cross-platform layout primitive for React and React Native
 ## Features
 ```js
 
-const theme = {
-  spacing: []
-}
-
 <Box
   backgroundColor={},
   backgroundImage={},
@@ -27,5 +23,5 @@ const theme = {
   opacity={},
   padding={},
   theme={} />
-  
+
 ```
