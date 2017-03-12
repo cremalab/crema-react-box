@@ -19,6 +19,7 @@ Name                   | Type                 | Options         | Default       
 `borderWidth`          | String *or* [String] | CSS length      | *none*        | ...        
 `childAlign`           | String *or* [String] | <div style="white-space: nowrap">`flex-start` <br> `flex-end` <br> `center` <br> `stretch` <br> `baseline`</div> | <div style="white-space: nowrap">`flex-start`</div> | Align children along the cross axis
 `childDirection`           | String *or* [String] | <div style="white-space: nowrap">`column`<br>`column-reverse`<br>`row`<br>`row-reverse`</div> | `column` | Vertical or horizontal orientation of children.
+`childIdealWidth`      | String *or* [String] | CSS length | `auto` | Flex-basis
 `childJustify`           | String *or* [String] | <div style="white-space: nowrap">`flex-start` <br> `flex-end` <br> `center` <br> `space-between` <br> `space-around`</div> | <div style="white-space: nowrap">`flex-start`</div>      | Align children along the main axis
 `childWrap`         | String *or* [String] | <div style="white-space: nowrap">`nowrap`<br>`wrap`<br>`wrap-reverse`</div>             | `nowrap`       | Spacing between children
 `childSpacing`         | String *or* [String] | CSS length     | *none*        | Spacing between children
