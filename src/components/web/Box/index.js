@@ -1,6 +1,6 @@
 import React, { PureComponent, Children } from 'react'
 import styled from 'styled-components'
-import Box from 'propTypes/Box'
+import BoxProps from 'propTypes/Box'
 
 const BoxContainer = styled.div`
   padding: ${props => props.padding}
@@ -18,13 +18,64 @@ class Component extends PureComponent {
   render() {
 
     const {
-      children
+      align,
+      backgroundAttachment,
+      backgroundColor,
+      backgroundImage,
+      backgroundPosition,
+      backgroundRepeat,
+      borderColor,
+      borderRadius,
+      borderStyle,
+      borderWidth,
+      childAlign,
+      childDirection,
+      childIdealWidth,
+      childJustify,
+      childWrap,
+      children,
+      childSpacing,
+      grow,
+      height,
+      opacity,
+      padding,
+      shrink,
+      width,
+      ...rest
     } = this.props
 
+    const styleProps = {
+      align,
+      backgroundAttachment,
+      backgroundColor,
+      backgroundImage,
+      backgroundPosition,
+      backgroundRepeat,
+      borderColor,
+      borderRadius,
+      borderStyle,
+      borderWidth,
+      childAlign,
+      childDirection,
+      childIdealWidth,
+      childJustify,
+      childWrap,
+      children,
+      childSpacing,
+      grow,
+      height,
+      opacity,
+      padding,
+      shrink,
+      width,
+    }
+
     return (
-      <BoxContainer>
-        <BoxChildren>
-          { Children.map(children, child => <BoxChild>{child}</BoxChild>) }
+      <BoxContainer  {...styleProps} {...rest}>
+        <BoxChildren {...styleProps} >
+          { Children.map(children, child =>
+            <BoxChild {...styleProps} {...child.props} />
+          )}
         </BoxChildren>
       </BoxContainer>
     )
@@ -33,7 +84,7 @@ class Component extends PureComponent {
 }
 
 Component.displayName = ComponentName
-Component.propTypes = Box
+Component.propTypes   = BoxProps
 
 export {
   Component as default

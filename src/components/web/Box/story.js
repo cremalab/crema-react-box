@@ -7,7 +7,7 @@ import Box from '.'
 storiesOf('Box', module)
   .add('base', () => {
     return (
-      <Box>
+      <Box padding='10px'>
         <Box>Child</Box>
         <Box>Child</Box>
         <Box>Child</Box>

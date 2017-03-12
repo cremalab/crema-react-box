@@ -48,4 +48,30 @@ describe('Box', () => {
 
   })
 
+  describe('props', () => {
+
+    it('non-style props are passed to BoxContainer only',
+      () => {
+        const BoxContainer = shallow(
+          <Box
+            padding='20px'
+            onClick={true}
+          >
+            <Box/>
+          </Box>
+        )
+        const BoxChildren  = BoxContainer.find('BoxChildren')
+        const BoxChild     = BoxChildren.find('BoxChild')
+        
+        expect(BoxContainer.prop('padding')).toBeTruthy()
+        expect(BoxContainer.prop('onClick')).toBeTruthy()
+        expect(BoxChildren.prop('padding')).toBeTruthy()
+        expect(BoxChildren.prop('onClick')).toBeFalsy()
+        expect(BoxChild.prop('padding')).toBeTruthy()
+        expect(BoxChild.prop('onClick')).toBeFalsy()
+      }
+    )
+
+  })
+
 })
