@@ -1,16 +1,27 @@
 import React, { PureComponent, Children } from 'react'
 import styled from 'styled-components'
 import BoxProps from 'propTypes/Box'
+import { propStyle } from 'utils/styleHelpers'
+
 
 const BoxContainer = styled.div`
-  padding: ${props => props.padding}
+  ${propStyle('padding', 'padding')}
+  ${propStyle('background-color', 'backgroundColor')}
 `
 BoxContainer.displayName = 'BoxContainer'
 
-const BoxChildren = styled.div``
+const BoxChildren = styled.div`
+  display: flex;
+  ${propStyle('flex-direction', 'childDirection')}
+  ${propStyle('flex-wrap', 'childWrap')}
+  ${propStyle('margin', 'childSpacing', { negate: true, halve: true })}
+`
 BoxChildren.displayName = 'BoxChildren'
 
-const BoxChild = styled.div``
+const BoxChild = styled.div`
+  ${propStyle('margin', 'childSpacing', { halve: true })}
+  ${propStyle('flex-grow', 'grow')}
+`
 BoxChild.displayName = 'BoxChild'
 
 const ComponentName = 'Box'
@@ -74,7 +85,7 @@ class Component extends PureComponent {
       <BoxContainer  {...styleProps} {...rest}>
         <BoxChildren {...styleProps} >
           { Children.map(children, child =>
-            <BoxChild {...styleProps} {...child.props} />
+            <BoxChild {...styleProps} {...child.props}>{child}</BoxChild>
           )}
         </BoxChildren>
       </BoxContainer>
@@ -83,8 +94,11 @@ class Component extends PureComponent {
   }
 }
 
-Component.displayName = ComponentName
-Component.propTypes   = BoxProps
+Component.displayName  = ComponentName
+Component.propTypes    = BoxProps
+Component.defaultProps = {
+  childDirection: 'column'
+}
 
 export {
   Component as default

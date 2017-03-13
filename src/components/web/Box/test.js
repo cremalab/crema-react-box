@@ -62,7 +62,7 @@ describe('Box', () => {
         )
         const BoxChildren  = BoxContainer.find('BoxChildren')
         const BoxChild     = BoxChildren.find('BoxChild')
-        
+
         expect(BoxContainer.prop('padding')).toBeTruthy()
         expect(BoxContainer.prop('onClick')).toBeTruthy()
         expect(BoxChildren.prop('padding')).toBeTruthy()
