@@ -14,14 +14,17 @@
     "test": "NODE_ENV=test jest",
     "test:coverage": "npm run test -- --coverage",
     "test:watch": "npm run test -- --watch",
-    "test:watch:coverage": "npm run test:coverage -- --watch"
+    "test:watch:coverage": "npm run test:coverage -- --watch",
+    "test:visual": "backstop --configPath backstop.config.js test",
+    "test:visual:reference": "backstop --configPath backstop.config.js reference"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.21.0",
     "@kadira/storybook-addon-knobs": "^1.7.1",
     "babel-loader": "^6.2.5",
-    "babel-preset-stage-0": "^6.22.0",
     "babel-plugin-ramda": "1.2.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "backstopjs": "^2.6.11",
     "case-sensitive-paths-webpack-plugin": "^1.1.4",
     "enzyme": "^2.7.1",
     "eslint": "^3.14.1",
@@ -32,6 +35,7 @@
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
+    "require-glob-array": "^4.0.0",
     "source-map-loader": "^0.1.6",
     "webpack": "^2.0.0"
   },

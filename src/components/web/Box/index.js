@@ -76,7 +76,7 @@ class Component extends PureComponent {
       opacity,
       padding,
       shrink,
-      width
+      width,
     };
 
     return (
@@ -94,7 +94,7 @@ class Component extends PureComponent {
 Component.displayName = ComponentName;
 Component.propTypes = BoxProps;
 Component.defaultProps = {
-  childDirection: "column"
+  childDirection: "column",
 };
 
 export { Component as default };
