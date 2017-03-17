@@ -1,88 +1,80 @@
-const path = require('path')
+const path = require("path");
 
-const libraryName = 'crema-react-ui'
+const libraryName = "react-boxen";
 
-module.exports = function (env) {
+module.exports = function() {
   return {
     entry: {
-      native: './src/components/indexNative.js',
-      web:    './src/components/indexWeb.js',
+      // native: "./src/components/native/Box",
+      web: "./src/components/web/Box"
     },
     output: {
-      path: path.resolve(__dirname, 'dist'),
-      filename: '[name]/index.js',
+      path: path.resolve(__dirname, "dist"),
+      filename: "[name]/index.js",
       library: libraryName,
-      libraryTarget: 'umd',
+      libraryTarget: "umd",
       umdNamedDefine: true
     },
     externals: {
-      'styled-components': {
-        commonjs: 'styled-components',
-        commonjs2: 'styled-components',
-        amd: 'styled-components',
-        root: '_'
+      "styled-components": {
+        commonjs: "styled-components",
+        commonjs2: "styled-components",
+        amd: "styled-components",
+        root: "_"
       },
-      'styled-components/native': {
-        commonjs: 'styled-components/native',
-        commonjs2: 'styled-components/native',
-        amd: 'styled-components/native',
-        root: '_'
+      "styled-components/native": {
+        commonjs: "styled-components/native",
+        commonjs2: "styled-components/native",
+        amd: "styled-components/native",
+        root: "_"
       },
-      'react': {
-        commonjs: 'react',
-        commonjs2: 'react',
-        amd: 'react',
-        root: '_'
+      react: {
+        commonjs: "react",
+        commonjs2: "react",
+        amd: "react",
+        root: "_"
       },
-      'react-dom': {
-        commonjs: 'react-dom',
-        commonjs2: 'react-dom',
-        amd: 'react-dom',
-        root: '_'
+      "react-dom": {
+        commonjs: "react-dom",
+        commonjs2: "react-dom",
+        amd: "react-dom",
+        root: "_"
       },
-      'react-native': {
-        commonjs: 'react-native',
-        commonjs2: 'react-native',
-        amd: 'react-native',
-        root: '_'
+      "react-native": {
+        commonjs: "react-native",
+        commonjs2: "react-native",
+        amd: "react-native",
+        root: "_"
       },
-      'react-native-web': {
-        commonjs: 'react-native-web',
-        commonjs2: 'react-native-web',
-        amd: 'react-native-web',
-        root: '_'
+      "react-native-web": {
+        commonjs: "react-native-web",
+        commonjs2: "react-native-web",
+        amd: "react-native-web",
+        root: "_"
+      },
+      ramda: {
+        commonjs: "ramda",
+        commonjs2: "ramda",
+        amd: "ramda",
+        root: "_"
       }
     },
     module: {
       rules: [
         {
           test: /\.(js)$/,
-          loader: 'babel-loader',
+          loader: "babel-loader",
           exclude: /node_modules/,
           query: {
-            cacheDirectory: true,
-          },
-        },
-        {
-          enforce: 'pre',
-          test: /\.js$/,
-          loader: 'source-map-loader',
-          exclude: /node_modules/,
-        },
+            cacheDirectory: true
+          }
+        }
       ]
     },
-    plugins:[
-    ],
+    plugins: [],
     resolve: {
-      modules: [
-        'node_modules',
-        path.resolve(__dirname, 'src')
-      ],
-      extensions: ['.webpack.js', '.web.js', '.js', '.jsx'],
-      alias: {
-        'react-native': 'react-native-web'
-      }
-    },
-    devtool: 'inline-source-map',
-  }
-}
+      modules: ["node_modules", path.resolve(__dirname, "src")],
+      extensions: [".webpack.js", ".web.js", ".js", ".jsx"]
+    }
+  };
+};
