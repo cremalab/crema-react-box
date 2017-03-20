@@ -19,3 +19,5 @@ npm-debug.log
 .tgz
 *.tgz
 stats.json
+backstop_data/bitmaps_test/**
+backstop_data/html_report/**
