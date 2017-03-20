@@ -18,12 +18,13 @@ const BoxChildren = styled.div`
 BoxChildren.displayName = "BoxChildren";
 
 const BoxChild = styled.div`
-  ${propStyle("margin", "childSpacing", { halve: true })}
+  box-sizing: border-box;
+  ${propStyle("padding", "childSpacing", { halve: true })}
   ${propStyle("flex-grow", "childGrow")}
   ${propStyle("flex-grow", "grow")}
   ${propStyle("flex-shrink", "shrink")}
   ${propStyle("flex-basis", "childIdealWidth")}
-  ${props => props.isCompensator ? `margin-top: 0; margin-bottom: 0;` : null}
+  ${props => props.isCompensator ? `padding-top: 0; padding-bottom: 0;` : null}
 `;
 BoxChild.displayName = "BoxChild";
 
@@ -47,7 +48,7 @@ class Component extends PureComponent {
       childIdealWidth,
       childJustify,
       childWrap,
-      childWrapOrphan,
+      childWrapLastGrow,
       children,
       childSpacing,
       grow,
@@ -91,7 +92,7 @@ class Component extends PureComponent {
           {Children.map(children, child => (
             <BoxChild {...styleProps} {...child.props}>{child}</BoxChild>
           ))}
-          {childWrapOrphan === "compensate" &&
+          {!childWrapLastGrow &&
             children.map(() => <BoxChild {...styleProps} isCompensator />)}
         </BoxChildren>
       </BoxContainer>
@@ -103,6 +104,7 @@ Component.displayName = ComponentName;
 Component.propTypes = BoxProps;
 Component.defaultProps = {
   childDirection: "column",
+  childWrapLastGrow: true,
 };
 
 export { Component as default };

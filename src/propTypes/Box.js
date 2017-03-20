@@ -1,5 +1,5 @@
 import { PropTypes } from "react";
-const { string, number, oneOf, oneOfType, arrayOf } = PropTypes;
+const { string, number, bool, oneOf, oneOfType, arrayOf } = PropTypes;
 
 const align = oneOf([
   "flex-start",
@@ -7,7 +7,7 @@ const align = oneOf([
   "center",
   "stretch",
   "baseline",
-  "auto"
+  "auto",
 ]);
 const stringOrNumber = oneOfType([string, number]);
 
@@ -30,7 +30,7 @@ export default {
     "flex-end",
     "center",
     "space-between",
-    "space-around"
+    "space-around",
   ]),
   childWrap: oneOf([
     "nowrap",
@@ -38,13 +38,14 @@ export default {
     "wrap-reverse",
     "inherit",
     "initial",
-    "unset"
+    "unset",
   ]),
+  childWrapLastGrow: bool,
   childSpacing: oneOfType([stringOrNumber, arrayOf(stringOrNumber)]),
   grow: number,
   height: string,
   opacity: number,
   padding: oneOfType([stringOrNumber, arrayOf(stringOrNumber)]),
   shrink: number,
-  width: string
+  width: string,
 };

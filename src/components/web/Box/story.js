@@ -42,7 +42,8 @@ storiesOf("Box", module)
         childDirection="row"
         childJustify="stretch"
         backgroundColor="orange"
-        padding="10px">
+        padding="10px"
+      >
         <Box backgroundColor="hsla(0, 0%, 100%, 0.75)" padding="10px">
           Child 1
         </Box>
@@ -60,11 +61,12 @@ storiesOf("Box", module)
         childSpacing="5px"
         childDirection="row"
         childWrap="wrap"
-        childWrapOrphan="auto"
+        childWrapLastGrow={false}
         childGrow="1"
-        childIdealWidth="49%"
+        childIdealWidth="50%"
         backgroundColor="orange"
-        padding="10px">
+        padding="10px"
+      >
         <Box backgroundColor="hsla(0, 0%, 100%, 0.75)" padding="10px">
           Child 1
         </Box>
@@ -89,7 +91,8 @@ storiesOf("Box", module)
         childDirection="row"
         childJustify="stretch"
         backgroundColor="orange"
-        padding="10px">
+        padding="10px"
+      >
         <Box grow="1" backgroundColor="hsla(0, 0%, 100%, 0.75)" padding="10px">
           Child 1
         </Box>
