@@ -1,5 +1,23 @@
-# Box
+# React Boxen
 A cross-platform layout primitive for React and React Native
+
+## Basic Usage
+```js
+import Box from "react-boxen"
+
+export default function MyComponent(props) {
+  return (
+    <Box 
+      backgroundColor="whitesmoke"
+      padding="20px"
+      childSpacing="10px">
+      <Box>Box 1</Box>
+      <Box>Box 2</Box>
+      <Box>Box 3</Box>      
+    </Box>
+  )
+}
+```
 
 ## API
 
