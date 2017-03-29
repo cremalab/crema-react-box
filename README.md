@@ -2,7 +2,7 @@
 A cross-platform layout primitive for React and React Native
 
 ## Basic Usage
-```js
+```jsx
 import Box from "react-boxen"
 
 export default function MyComponent(props) {
