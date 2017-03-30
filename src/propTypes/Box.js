@@ -23,8 +23,13 @@ export default {
   borderStyle: oneOfType([stringOrNumber, arrayOf(stringOrNumber)]),
   borderWidth: oneOfType([stringOrNumber, arrayOf(stringOrNumber)]),
   childAlign: align,
-  childBasis: string,
-  childDirection: oneOf(["column", "column-reverse", "row", "row-reverse"]),
+  childBasis: stringOrNumber,
+  childDirection: oneOf([
+    "column",
+    "column-reverse",
+    "row",
+    "row-reverse"
+  ]),
   childJustify: oneOf([
     "flex-start",
     "flex-end",
@@ -42,10 +47,11 @@ export default {
   ]),
   childWrapLastGrow: bool,
   childSpacing: oneOfType([stringOrNumber, arrayOf(stringOrNumber)]),
-  grow: number,
-  height: string,
-  opacity: number,
+  color: stringOrNumber,
+  grow: stringOrNumber,
+  height: stringOrNumber,
+  opacity: stringOrNumber,
   padding: oneOfType([stringOrNumber, arrayOf(stringOrNumber)]),
-  shrink: number,
-  width: string,
+  shrink: stringOrNumber,
+  width: stringOrNumber,
 };

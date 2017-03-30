@@ -4,15 +4,21 @@ import BoxProps from "propTypes/Box";
 import { propStyle } from "utils/styleHelpers";
 
 const BoxContainer = styled.div`
+  box-sizing: border-box;
+  ${propStyle("width", "width")}
+  ${propStyle("height", "height")}
   ${propStyle("padding", "padding")}
+  ${propStyle("color", "color")}
   ${propStyle("background-color", "backgroundColor")}
 `;
 BoxContainer.displayName = "BoxContainer";
 
 const BoxChildren = styled.div`
+  box-sizing: border-box;
   display: flex;
   ${propStyle("flex-direction", "childDirection")}
   ${propStyle("flex-wrap", "childWrap")}
+  ${propStyle("justify-content", "childJustify")}
   ${propStyle("margin", "childSpacing", { negate: true, halve: true })}
 `;
 BoxChildren.displayName = "BoxChildren";
@@ -51,6 +57,7 @@ class Component extends PureComponent {
       childWrapLastGrow,
       children,
       childSpacing,
+      color,
       grow,
       height,
       opacity,
@@ -78,6 +85,7 @@ class Component extends PureComponent {
       childJustify,
       childWrap,
       childSpacing,
+      color,
       grow,
       height,
       opacity,
@@ -89,11 +97,11 @@ class Component extends PureComponent {
     return (
       <BoxContainer {...styleProps} {...rest}>
         <BoxChildren {...styleProps}>
-          {Children.map(children, child => (
-            <BoxChild {...styleProps} {...child.props}>{child}</BoxChild>
-          ))}
-          {!childWrapLastGrow &&
-            children.map(() => <BoxChild {...styleProps} isCompensator />)}
+          { Children.map(children, (child, i) => {
+              return <BoxChild key={i} {...styleProps} {...child.props}>{child}</BoxChild>
+            })}
+          { !childWrapLastGrow &&
+            children.map((x, i) => <BoxChild key={i} {...styleProps} isCompensator />) }
         </BoxChildren>
       </BoxContainer>
     );
