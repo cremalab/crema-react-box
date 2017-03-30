@@ -63,7 +63,7 @@ storiesOf("Box", module)
         childWrap="wrap"
         childWrapLastGrow={false}
         childGrow="1"
-        childIdealWidth="50%"
+        childBasis="50%"
         backgroundColor="orange"
         padding="10px"
       >

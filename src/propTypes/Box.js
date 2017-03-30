@@ -23,8 +23,8 @@ export default {
   borderStyle: oneOfType([stringOrNumber, arrayOf(stringOrNumber)]),
   borderWidth: oneOfType([stringOrNumber, arrayOf(stringOrNumber)]),
   childAlign: align,
+  childBasis: string,
   childDirection: oneOf(["column", "column-reverse", "row", "row-reverse"]),
-  childIdealWidth: string,
   childJustify: oneOf([
     "flex-start",
     "flex-end",

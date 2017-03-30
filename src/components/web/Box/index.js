@@ -23,7 +23,7 @@ const BoxChild = styled.div`
   ${propStyle("flex-grow", "childGrow")}
   ${propStyle("flex-grow", "grow")}
   ${propStyle("flex-shrink", "shrink")}
-  ${propStyle("flex-basis", "childIdealWidth")}
+  ${propStyle("flex-basis", "childBasis")}
   ${props => props.isCompensator ? `padding-top: 0; padding-bottom: 0;` : null}
 `;
 BoxChild.displayName = "BoxChild";
@@ -45,7 +45,7 @@ class Component extends PureComponent {
       childAlign,
       childDirection,
       childGrow,
-      childIdealWidth,
+      childBasis,
       childJustify,
       childWrap,
       childWrapLastGrow,
@@ -74,7 +74,7 @@ class Component extends PureComponent {
       childAlign,
       childDirection,
       childGrow,
-      childIdealWidth,
+      childBasis,
       childJustify,
       childWrap,
       childSpacing,
