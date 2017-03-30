@@ -11,7 +11,7 @@ module.exports = {
   ],
   scenarios: requireGlobArray("./src/**/scenarios/*.js").map(x =>
     x({
-      urlBase: "http://localhost:9001"
+      urlBase: "http://localhost:5000"
     })),
   paths: {
     bitmaps_reference: "backstop_data/bitmaps_reference",
