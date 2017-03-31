@@ -14,7 +14,7 @@ const BoxContainer = styled.div`
   ${propStyle("height",           "height")}
   ${propStyle("padding",          "padding")}
   ${propStyle("width",            "width")}
-  ${props => props.css}
+  ${props => props.styleProps.css}
 `;
 BoxContainer.displayName = "BoxContainer";
 
@@ -83,6 +83,8 @@ class Component extends PureComponent {
       childBasis,
       childJustify,
       childWrap,
+      childWrapLastGrow,
+      children,
       childSpacing,
       color,
       css,
@@ -95,13 +97,13 @@ class Component extends PureComponent {
     };
 
     return (
-      <BoxContainer {...styleProps} {...rest}>
-        <BoxChildren {...styleProps}>
+      <BoxContainer styleProps={styleProps} {...rest}>
+        <BoxChildren styleProps={styleProps}>
           { Children.map(children, (child, i) => {
-              return <BoxChild key={i} {...styleProps} {...child.props}>{child}</BoxChild>
+              return <BoxChild key={i} styleProps={{...styleProps, ...child.props}}>{child}</BoxChild>
             })}
           { !childWrapLastGrow &&
-            children.map((x, i) => <BoxChild key={i} {...styleProps} isCompensator />) }
+            children.map((x, i) => <BoxChild key={i} styleProps={styleProps} isCompensator />) }
         </BoxChildren>
       </BoxContainer>
     );

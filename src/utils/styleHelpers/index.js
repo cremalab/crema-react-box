@@ -45,5 +45,5 @@ export const toCssAttr = (attr, name, opts = {}) =>
     return `${attr}: ${processed};`;
   };
 
-export const propStyle = (attr, name, opts = {}) =>
-  ifElse(prop(name), toCssAttr(attr, name, opts), always(null));
+export const propStyle = (attr, name, opts = {}) => props =>
+  ifElse(prop(name), toCssAttr(attr, name, opts), always(null))(props.styleProps);
