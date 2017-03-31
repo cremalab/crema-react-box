@@ -100,7 +100,11 @@ class Component extends PureComponent {
       <BoxContainer styleProps={styleProps} {...rest}>
         <BoxChildren styleProps={styleProps}>
           { Children.map(children, (child, i) => {
-              return <BoxChild key={i} styleProps={{...styleProps, ...child.props}}>{child}</BoxChild>
+              return <BoxChild key={i} styleProps={{
+                ...styleProps,
+                grow: child.props && child.props.grow,
+                shrink: child.props && child.props.shrink
+              }}>{child}</BoxChild>
             })}
           { !childWrapLastGrow &&
             children.map((x, i) => <BoxChild key={i} styleProps={styleProps} isCompensator />) }
