@@ -5,31 +5,37 @@ import { propStyle } from "utils/styleHelpers";
 
 const BoxContainer = styled.div`
   box-sizing: border-box;
-  ${propStyle("width", "width")}
-  ${propStyle("height", "height")}
-  ${propStyle("padding", "padding")}
-  ${propStyle("color", "color")}
   ${propStyle("background-color", "backgroundColor")}
+  ${propStyle("border-color",     "borderColor")}
+  ${propStyle("border-radius",    "borderRadius")}
+  ${propStyle("border-style",     "borderStyle")}
+  ${propStyle("border-width",     "borderWidth")}
+  ${propStyle("color",            "color")}
+  ${propStyle("height",           "height")}
+  ${propStyle("padding",          "padding")}
+  ${propStyle("width",            "width")}
+  ${props => props.css}
 `;
 BoxContainer.displayName = "BoxContainer";
 
 const BoxChildren = styled.div`
   box-sizing: border-box;
   display: flex;
-  ${propStyle("flex-direction", "childDirection")}
-  ${propStyle("flex-wrap", "childWrap")}
-  ${propStyle("justify-content", "childJustify")}
-  ${propStyle("margin", "childSpacing", { negate: true, halve: true })}
+  ${propStyle("flex-direction",   "childDirection")}
+  ${propStyle("flex-wrap",        "childWrap")}
+  ${propStyle("align-items",      "childAlign")}
+  ${propStyle("justify-content",  "childJustify")}
+  ${propStyle("margin",           "childSpacing", { negate: true, halve: true })}
 `;
 BoxChildren.displayName = "BoxChildren";
 
 const BoxChild = styled.div`
   box-sizing: border-box;
-  ${propStyle("padding", "childSpacing", { halve: true })}
-  ${propStyle("flex-grow", "childGrow")}
-  ${propStyle("flex-grow", "grow")}
+  ${propStyle("flex-grow",   "childGrow")}
+  ${propStyle("flex-grow",   "grow")}
   ${propStyle("flex-shrink", "shrink")}
-  ${propStyle("flex-basis", "childBasis")}
+  ${propStyle("flex-basis",  "childBasis")}
+  ${propStyle("padding",     "childSpacing", { halve: true })}
   ${props => props.isCompensator ? `padding-top: 0; padding-bottom: 0;` : null}
 `;
 BoxChild.displayName = "BoxChild";
@@ -39,11 +45,7 @@ class Component extends PureComponent {
   render() {
     const {
       align,
-      backgroundAttachment,
       backgroundColor,
-      backgroundImage,
-      backgroundPosition,
-      backgroundRepeat,
       borderColor,
       borderRadius,
       borderStyle,
@@ -58,6 +60,7 @@ class Component extends PureComponent {
       children,
       childSpacing,
       color,
+      css,
       grow,
       height,
       opacity,
@@ -69,11 +72,7 @@ class Component extends PureComponent {
 
     const styleProps = {
       align,
-      backgroundAttachment,
       backgroundColor,
-      backgroundImage,
-      backgroundPosition,
-      backgroundRepeat,
       borderColor,
       borderRadius,
       borderStyle,
@@ -86,6 +85,7 @@ class Component extends PureComponent {
       childWrap,
       childSpacing,
       color,
+      css,
       grow,
       height,
       opacity,
