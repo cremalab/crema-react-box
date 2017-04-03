@@ -9,10 +9,11 @@ module.exports = {
       height: 400
     }
   ],
-  scenarios: requireGlobArray("./src/**/scenarios/*.js").map(x =>
+  scenarios: requireGlobArray("./src/**/*scenario.js").map(x =>
     x({
-      urlBase: "http://localhost:5000"
-    })),
+      screen: name => `http://localhost:5000/?selectedKind=Box&selectedStory=${name}&full=1&down=1&left=1&panelRight=0&downPanel=kadirahq%2Fstorybook-addon-actions%2Factions-panel`
+    })
+  ),
   paths: {
     bitmaps_reference: "backstop_data/bitmaps_reference",
     bitmaps_test: "backstop_data/bitmaps_test",

@@ -26,7 +26,7 @@ describe("propStyle", () => {
     expect(actual).toBeInstanceOf(Function);
   });
   describe("returned function takes props", () => {
-    const props = { test: "10px" };
+    const props = { styleProps: { test: "10px" } };
     it("returns css string if prop exists", () => {
       const actual = styleHelpers.propStyle("padding", "test")(props);
       expect(actual).toEqual("padding: 10px;");
@@ -37,7 +37,7 @@ describe("propStyle", () => {
     });
   });
   describe("opts", () => {
-    const props = { test: "-10.75px" };
+    const props = { styleProps: { test: "-10.75px" } };
     it("handles opts.halve", () => {
       const actual = styleHelpers.propStyle("padding", "test", { halve: true })(
         props

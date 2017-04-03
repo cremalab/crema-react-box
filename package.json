@@ -14,18 +14,15 @@
     "test:coverage": "npm run test -- --coverage",
     "test:watch": "npm run test -- --watch",
     "test:watch:coverage": "npm run test:coverage -- --watch",
-
-    "test:visual":           "run-p test:vis:serve test:vis:run",
+    "test:visual": "run-p test:vis:serve test:vis:run",
     "test:visual:reference": "run-p test:vis:serve test:vis:run:ref",
-
-    "test:vis:serve":        "serve storybook-static",
-    "test:vis:serve:stop":   "lsof -ti:5000 | xargs kill",
-    "test:vis:build":        "build-storybook",
-    "test:vis:run":          "run-s test:vis:build test:vis:backstop test:vis:serve:stop",
-    "test:vis:run:ref":      "run-s test:vis:build test:vis:backstop:ref test:vis:serve:stop",
-    "test:vis:backstop":     "backstop --configPath backstop.config.js test",
+    "test:vis:serve": "serve storybook-static",
+    "test:vis:serve:stop": "lsof -ti:5000 | xargs kill",
+    "test:vis:build": "build-storybook",
+    "test:vis:run": "run-s test:vis:build test:vis:backstop test:vis:serve:stop",
+    "test:vis:run:ref": "run-s test:vis:build test:vis:backstop:ref test:vis:serve:stop",
+    "test:vis:backstop": "backstop --configPath backstop.config.js test",
     "test:vis:backstop:ref": "backstop --configPath backstop.config.js reference"
-
   },
   "devDependencies": {
     "@kadira/storybook": "^2.21.0",
@@ -43,6 +40,7 @@
     "jest": "^18.1.0",
     "jest-enzyme": "^2.1.0",
     "npm-run-all": "^4.0.2",
+    "phantomjs": "^2.1.7+deprecated",
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",

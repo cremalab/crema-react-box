@@ -42,6 +42,8 @@ Property               | Type   | Value _(default `*`)_                         
 `childDirection`       | String | `column *` `column-reverse` `row` `row-reverse`                   | Vertical or horizontal orientation of children
 `childJustify`         | String | `flex-start *` `flex-end` `center` `space-between` `space-around` | Align children along the main axis
 `childWrap`            | String | `nowrap *` `wrap` `wrap-reverse`                                  | Define whether or not children can wrap
+`childWrapLastGrow`    | String | `nowrap *` `wrap` `wrap-reverse`                                  | Define whether or not children can wrap
+`childWrapCount`       | Number | `20 *`                                                            | Typical items show before wrapping. Useful for maintaining `ChildBasis` width when fewer than typical wrap count.
 `childSpacing`         | String | Length                                                            | Spacing between children on any axis
 `color`                | String | Color                                                             | ...
 `css`                  | String | Template literal containing valid CSS                             | See [styled-components documentation](https://github.com/styled-components/styled-components#passed-props)

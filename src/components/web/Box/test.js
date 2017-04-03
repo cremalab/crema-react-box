@@ -63,11 +63,11 @@ describe('Box', () => {
         const BoxChildren  = BoxContainer.find('BoxChildren')
         const BoxChild     = BoxChildren.find('BoxChild')
 
-        expect(BoxContainer.prop('padding')).toBeTruthy()
+        expect(BoxContainer.prop('styleProps').padding).toBeTruthy()
         expect(BoxContainer.prop('onClick')).toBeTruthy()
-        expect(BoxChildren.prop('padding')).toBeTruthy()
+        expect(BoxChildren.prop('styleProps').padding).toBeTruthy()
         expect(BoxChildren.prop('onClick')).toBeFalsy()
-        expect(BoxChild.prop('padding')).toBeTruthy()
+        expect(BoxChild.prop('styleProps').padding).toBeTruthy()
         expect(BoxChild.prop('onClick')).toBeFalsy()
       }
     )

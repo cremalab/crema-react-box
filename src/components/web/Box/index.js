@@ -4,7 +4,11 @@ import BoxProps from "propTypes/Box";
 import { propStyle } from "utils/styleHelpers";
 
 const BoxContainer = styled.div`
+  overflow: hidden;
+  display: flex;
   box-sizing: border-box;
+  ${propStyle("flex-grow",        "grow")}
+  ${propStyle("flex-shrink",      "shrink")}
   ${propStyle("background-color", "backgroundColor")}
   ${propStyle("border-color",     "borderColor")}
   ${propStyle("border-radius",    "borderRadius")}
@@ -14,13 +18,15 @@ const BoxContainer = styled.div`
   ${propStyle("height",           "height")}
   ${propStyle("padding",          "padding")}
   ${propStyle("width",            "width")}
+  ${propStyle("align-self",       "align")}
   ${props => props.styleProps.css}
 `;
 BoxContainer.displayName = "BoxContainer";
 
 const BoxChildren = styled.div`
-  box-sizing: border-box;
   display: flex;
+  flex-grow: 1;
+  box-sizing: border-box;
   ${propStyle("flex-direction",   "childDirection")}
   ${propStyle("flex-wrap",        "childWrap")}
   ${propStyle("align-items",      "childAlign")}
@@ -30,12 +36,16 @@ const BoxChildren = styled.div`
 BoxChildren.displayName = "BoxChildren";
 
 const BoxChild = styled.div`
+  display: flex;
   box-sizing: border-box;
+  flex-direction: column;
   ${propStyle("flex-grow",   "childGrow")}
   ${propStyle("flex-grow",   "grow")}
+  ${propStyle("flex-shrink", "childShrink")}
   ${propStyle("flex-shrink", "shrink")}
   ${propStyle("flex-basis",  "childBasis")}
   ${propStyle("padding",     "childSpacing", { halve: true })}
+  ${propStyle("width",       "width")}
   ${props => props.isCompensator ? `padding-top: 0; padding-bottom: 0;` : null}
 `;
 BoxChild.displayName = "BoxChild";
@@ -55,15 +65,15 @@ class Component extends PureComponent {
       childGrow,
       childBasis,
       childJustify,
+      childShrink,
       childWrap,
       childWrapLastGrow,
+      childWrapCount,
       children,
       childSpacing,
       color,
       css,
       grow,
-      height,
-      opacity,
       padding,
       shrink,
       width,
@@ -82,15 +92,15 @@ class Component extends PureComponent {
       childGrow,
       childBasis,
       childJustify,
+      childShrink,
       childWrap,
       childWrapLastGrow,
+      childWrapCount,
       children,
       childSpacing,
       color,
       css,
       grow,
-      height,
-      opacity,
       padding,
       shrink,
       width,
@@ -100,14 +110,30 @@ class Component extends PureComponent {
       <BoxContainer styleProps={styleProps} {...rest}>
         <BoxChildren styleProps={styleProps}>
           { Children.map(children, (child, i) => {
-              return <BoxChild key={i} styleProps={{
+            return <BoxChild
+              key={i}
+              styleProps={{
                 ...styleProps,
                 grow: child.props && child.props.grow,
-                shrink: child.props && child.props.shrink
-              }}>{child}</BoxChild>
-            })}
-          { !childWrapLastGrow &&
-            children.map((x, i) => <BoxChild key={i} styleProps={styleProps} isCompensator />) }
+                shrink: child.props && child.props.shrink,
+                width: child.props && child.props.width,
+                height: child.props && child.props.height,
+              }}>{ child.type
+              ? React.cloneElement(child, {
+                  grow: grow || childGrow,
+                  shrink: shrink || childShrink,
+                  width: child.props.width && 0
+                })
+              : child }
+            </BoxChild>
+          }) }
+          { childWrap && !childWrapLastGrow && [...Array(childWrapCount || 20).keys()].map((child, i) =>
+            <BoxChild
+              key={i}
+              styleProps={styleProps}
+              isCompensator
+            />
+          ) }
         </BoxChildren>
       </BoxContainer>
     );
@@ -119,6 +145,8 @@ Component.propTypes = BoxProps;
 Component.defaultProps = {
   childDirection: "column",
   childWrapLastGrow: true,
+  borderStyle: "solid",
+  borderWidth: "0",
 };
 
 export { Component as default };

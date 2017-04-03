@@ -36,6 +36,7 @@ export default {
     "center",
     "space-between",
     "space-around",
+    "space-evenly",
   ]),
   childWrap: oneOf([
     "nowrap",
