@@ -1,4 +1,4 @@
-import React, { PureComponent, Children } from "react";
+import React, { Children } from "react";
 import styled from "styled-components";
 import BoxProps from "propTypes/Box";
 import { propStyle } from "utils/styleHelpers";
@@ -53,7 +53,7 @@ const BoxChild = styled.div`
 BoxChild.displayName = "BoxChild";
 
 const ComponentName = "Box";
-class Component extends PureComponent {
+class Component extends React.Component {
   render() {
     const {
       align,
