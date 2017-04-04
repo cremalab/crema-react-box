@@ -23,7 +23,7 @@
     "test:vis:backstop": "backstop --configPath backstop.config.js test",
     "test:vis:backstop:ref": "backstop --configPath backstop.config.js reference",
 
-    "PUBLISH": "npm run build:prod && npm publish"
+    "distribute": "npm run build:prod && npm publish"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.21.0",
