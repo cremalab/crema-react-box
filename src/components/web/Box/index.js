@@ -4,6 +4,8 @@ import BoxProps from "propTypes/Box";
 import { propStyle } from "utils/styleHelpers";
 
 const BoxContainer = styled.div`
+  flex-grow: inherit;
+  flex-shrink: inherit;
   overflow: hidden;
   display: flex;
   box-sizing: border-box;
@@ -120,8 +122,6 @@ class Component extends PureComponent {
                 height: child.props && child.props.height,
               }}>{ child.type
               ? React.cloneElement(child, {
-                  grow: grow || childGrow,
-                  shrink: shrink || childShrink,
                   width: child.props.width && 0
                 })
               : child }
