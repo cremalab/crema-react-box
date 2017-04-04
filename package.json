@@ -1,6 +1,6 @@
 {
   "name": "react-boxen",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "web.js",
   "license": "MIT",
   "scripts": {
@@ -8,7 +8,6 @@
     "build": "rm -rf ./dist/* && webpack --progress --profile --colors",
     "build:dev": "npm run build -- --env=dev",
     "build:prod": "npm run build -- --env=prod",
-    "publish": "npm run build:prod && npm pack",
     "dev": "getstorybook",
     "test": "NODE_ENV=test jest",
     "test:coverage": "npm run test -- --coverage",
@@ -22,7 +21,9 @@
     "test:vis:run": "run-s test:vis:build test:vis:backstop test:vis:serve:stop",
     "test:vis:run:ref": "run-s test:vis:build test:vis:backstop:ref test:vis:serve:stop",
     "test:vis:backstop": "backstop --configPath backstop.config.js test",
-    "test:vis:backstop:ref": "backstop --configPath backstop.config.js reference"
+    "test:vis:backstop:ref": "backstop --configPath backstop.config.js reference",
+
+    "PUBLISH": "npm run build:prod && npm publish"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.21.0",
