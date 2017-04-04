@@ -2,6 +2,8 @@ src
 .storybook
 backstop_data
 backstop.config.js
+storybook-static
+*.tgz
 .eslintrc
 .gitignore
 .babelrc
