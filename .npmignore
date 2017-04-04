@@ -1,5 +1,7 @@
 src
 .storybook
+backstop_data
+backstop.config.js
 .eslintrc
 .gitignore
 .babelrc
