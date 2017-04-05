@@ -36,14 +36,14 @@ const reassemble = x => join(" ", map(join(""), zip(x.values, x.lengths)));
 export const cssAdjust = curry((fn, xs) =>
   compose(reassemble, mapFn(fn), mapToObj)(xs));
 
-export const toCssAttr = (attr, name, opts = {}) =>
+export const toCssAttr = (name, opts = {}) =>
   props => {
     const processed = compose(
       ifElse(always(opts.halve), cssAdjust(divide(__, 2)), identity),
       ifElse(always(opts.negate), cssAdjust(multiply(-1)), identity)
     )(props[name]);
-    return `${attr}: ${processed};`;
+    return `${processed}`;
   };
 
-export const propStyle = (attr, name, opts = {}) => props =>
-  ifElse(prop(name), toCssAttr(attr, name, opts), always(null))(props.styleProps);
+export const propStyle = (name, opts = {}) => props =>
+  ifElse(prop(name), toCssAttr(name, opts), always(null))(props);

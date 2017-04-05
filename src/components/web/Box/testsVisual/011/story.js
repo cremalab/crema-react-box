@@ -9,7 +9,7 @@ story.add(getName(__dirname), () => {
       grow='1'
       childSpacing="20px">
       <Box
-        css={css.parent}
+        style={css.parent}
         grow='1'
         childWrap="wrap"
         childWrapLastGrow={false}
@@ -18,10 +18,10 @@ story.add(getName(__dirname), () => {
         childSpacing="10px"
         childAlign="flex-start"
         childDirection="row">
-        {[...Array(1).keys()].map((x, i) => <Box key={i} css={css.child}>{`Child ${x}`}</Box>)}
+        {[...Array(1).keys()].map((x, i) => <Box key={i} style={css.child}>{`Child ${x}`}</Box>)}
       </Box>
       <Box
-        css={css.parent}
+        style={css.parent}
         grow='1'
         childWrap="wrap"
         childWrapLastGrow={false}
@@ -30,7 +30,7 @@ story.add(getName(__dirname), () => {
         childSpacing="10px"
         childAlign="flex-start"
         childDirection="row">
-        {[...Array(14).keys()].map((x, i) => <Box key={i} css={css.child}>{`Child ${x}`}</Box>)}
+        {[...Array(14).keys()].map((x, i) => <Box key={i} style={css.child}>{`Child ${x}`}</Box>)}
       </Box>
     </Box>
   )

@@ -48,8 +48,8 @@
     "webpack": "^2.0.0"
   },
   "dependencies": {
-    "ramda": "^0.23.0",
-    "styled-components": "^1.0.0"
+    "glamor": "^2.20.24",
+    "ramda": "^0.23.0"
   },
   "peerDependencies": {
     "react": "^15.0.0"

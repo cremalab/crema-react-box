@@ -6,7 +6,7 @@ story.add(getName(__dirname), () => {
   return(
     <div className="frameFullScreen">
       <Box
-        css={css.parent}
+        style={css.parent}
         align='flex-start'
         childWrap="wrap"
         childSpacing="10px"
@@ -14,7 +14,7 @@ story.add(getName(__dirname), () => {
         childGrow="1"
         childAlign="flex-start"
         childDirection="row">
-        {[...Array(14).keys()].map((x, i) => <Box key={i} css={css.child}>{`Child ${x}`}</Box>)}
+        {[...Array(14).keys()].map((x, i) => <Box key={i} style={css.child}>{`Child ${x}`}</Box>)}
       </Box>
     </div>
   )

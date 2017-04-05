@@ -10,13 +10,13 @@ describe("cssAdjust", () => {
 
 describe("toCssAttr", () => {
   it("returns function", () => {
-    const actual = styleHelpers.toCssAttr("padding", "test");
+    const actual = styleHelpers.toCssAttr("test");
     expect(actual).toBeInstanceOf(Function);
   });
   it("returned function accepts props and returns css string", () => {
     const props = { test: "10px" };
-    const actual = styleHelpers.toCssAttr("padding", "test")(props);
-    expect(actual).toBe("padding: 10px;");
+    const actual = styleHelpers.toCssAttr("test")(props);
+    expect(actual).toBe("10px");
   });
 });
 
@@ -26,40 +26,40 @@ describe("propStyle", () => {
     expect(actual).toBeInstanceOf(Function);
   });
   describe("returned function takes props", () => {
-    const props = { styleProps: { test: "10px" } };
+    const props = { test: "10px" };
     it("returns css string if prop exists", () => {
-      const actual = styleHelpers.propStyle("padding", "test")(props);
-      expect(actual).toEqual("padding: 10px;");
+      const actual = styleHelpers.propStyle("test")(props);
+      expect(actual).toEqual("10px");
     });
     it("returns null if prop does not exist", () => {
-      const actual = styleHelpers.propStyle("padding", "bad")(props);
+      const actual = styleHelpers.propStyle("bad")(props);
       expect(actual).toEqual(null);
     });
   });
   describe("opts", () => {
-    const props = { styleProps: { test: "-10.75px" } };
+    const props = { test: "-10.75px" };
     it("handles opts.halve", () => {
-      const actual = styleHelpers.propStyle("padding", "test", { halve: true })(
+      const actual = styleHelpers.propStyle("test", { halve: true })(
         props
       );
-      expect(actual).toEqual("padding: -5.375px;");
+      expect(actual).toEqual("-5.375px");
     });
     it("handles opts.negate", () => {
-      const actual = styleHelpers.propStyle("padding", "test", {
+      const actual = styleHelpers.propStyle("test", {
         negate: true
       })(props);
-      expect(actual).toEqual("padding: 10.75px;");
+      expect(actual).toEqual("10.75px");
     });
     it("handles opts.halve and opts.negate", () => {
-      const actual = styleHelpers.propStyle("padding", "test", {
+      const actual = styleHelpers.propStyle("test", {
         negate: true,
         halve: true
       })(props);
-      expect(actual).toEqual("padding: 5.375px;");
+      expect(actual).toEqual("5.375px");
     });
     it("handles no opts", () => {
-      const actual = styleHelpers.propStyle("padding", "test")(props);
-      expect(actual).toEqual("padding: -10.75px;");
+      const actual = styleHelpers.propStyle("test")(props);
+      expect(actual).toEqual("-10.75px");
     });
   });
 });

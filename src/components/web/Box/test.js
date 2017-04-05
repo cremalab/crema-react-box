@@ -20,21 +20,21 @@ describe('Box', () => {
 
     it('renders BoxContainer',
       () => {
-        const actual = wrapper.first().name()
+        const actual = wrapper.first().prop('className')
         expect(actual).toBe('BoxContainer')
       }
     )
 
     it('renders BoxContainer/BoxChildren',
       () => {
-        const actual = wrapper.first().children().name()
+        const actual = wrapper.first().children().prop('className')
         expect(actual).toBe('BoxChildren')
       }
     )
 
     it('renders BoxContainer/BoxChildren/BoxChild',
       () => {
-        const actual = wrapper.first().children().first().children().first().name()
+        const actual = wrapper.first().children().first().children().first().prop('className')
         expect(actual).toBe('BoxChild')
       }
     )
@@ -60,14 +60,12 @@ describe('Box', () => {
             <Box/>
           </Box>
         )
-        const BoxChildren  = BoxContainer.find('BoxChildren')
-        const BoxChild     = BoxChildren.find('BoxChild')
+        
+        const BoxChildren  = BoxContainer.find('.BoxChildren')
+        const BoxChild     = BoxChildren.find('.BoxChild')
 
-        expect(BoxContainer.prop('styleProps').padding).toBeTruthy()
         expect(BoxContainer.prop('onClick')).toBeTruthy()
-        expect(BoxChildren.prop('styleProps').padding).toBeTruthy()
         expect(BoxChildren.prop('onClick')).toBeFalsy()
-        expect(BoxChild.prop('styleProps').padding).toBeTruthy()
         expect(BoxChild.prop('onClick')).toBeFalsy()
       }
     )
