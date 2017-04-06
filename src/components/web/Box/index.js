@@ -12,6 +12,8 @@ const BoxContainer = props => css({
   flexGrow: props.grow ? props.grow : 'inherit',
   flexShrink: props.shrink ? props.shrink : 'inherit',
   padding: props.padding,
+  width: props.width,
+  height: props.height,
   ...props.style
 })
 
@@ -84,7 +86,7 @@ class Component extends React.Component {
       width,
     };
 
-    const moreThanOneChild = children && typeof children !== 'string' && children.length > 0
+    const moreThanOneChild = children && typeof children !== 'string'
 
     const wrappedChildren = Children.map(children, (child, i) => {
       return <div
@@ -97,7 +99,7 @@ class Component extends React.Component {
           height: child.props && child.props.height,
         })}>{ child.type
         ? React.cloneElement(child, {
-            width: child.props.width && 0
+            width: child.props.width && 'auto'
           })
         : child }
       </div>
