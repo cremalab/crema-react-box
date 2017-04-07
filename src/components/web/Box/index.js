@@ -97,11 +97,12 @@ class Component extends React.Component {
           shrink: child && child.props && child.props.shrink,
           width: child && child.props && child.props.width,
           height: child && child.props && child.props.height,
-        })}>{ child.type
-        ? React.cloneElement(child, {
-            width: child && child.props && child.props.width && 'auto'
-          })
-        : child }
+        })}>
+          { (child && child.type)
+            ? React.cloneElement(child, {
+                width: child && child.props && child.props.width && 'auto'
+              })
+            : child || null }
       </div>
     })
 
