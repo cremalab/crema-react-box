@@ -1,6 +1,6 @@
 {
   "name": "react-boxen",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "main": "web.js",
   "license": "MIT",
   "scripts": {
