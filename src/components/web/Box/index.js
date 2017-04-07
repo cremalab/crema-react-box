@@ -93,13 +93,13 @@ class Component extends React.Component {
         key={i}
         {...BoxChild({
           ...styleProps,
-          grow: child.props && child.props.grow,
-          shrink: child.props && child.props.shrink,
-          width: child.props && child.props.width,
-          height: child.props && child.props.height,
+          grow: child && child.props && child.props.grow,
+          shrink: child && child.props && child.props.shrink,
+          width: child && child.props && child.props.width,
+          height: child && child.props && child.props.height,
         })}>{ child.type
         ? React.cloneElement(child, {
-            width: child.props.width && 'auto'
+            width: child && child.props && child.props.width && 'auto'
           })
         : child }
       </div>
