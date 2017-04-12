@@ -86,18 +86,20 @@ class Component extends React.Component {
       width,
     };
 
-    const moreThanOneChild = children && typeof children !== 'string'
+    const childrenNotString = children && typeof children !== 'string'
 
     const wrappedChildren = Children.map(children, (child, i) => {
+      if(child === null) return null
       return <div
-        key={i}
+        className='BoxChild'
         {...BoxChild({
           ...styleProps,
           grow: child && child.props && child.props.grow,
           shrink: child && child.props && child.props.shrink,
           width: child && child.props && child.props.width,
           height: child && child.props && child.props.height,
-        })}>
+        })}
+        key={i}>
           { (child && child.type)
             ? React.cloneElement(child, {
                 width: child && child.props && child.props.width && 'auto'
@@ -107,14 +109,15 @@ class Component extends React.Component {
     })
 
     return (
-      <div {...BoxContainer(styleProps)} {...rest}>
-        { moreThanOneChild && childSpacing
-            ? <div {...BoxChildren(styleProps)}>
+      <div className='BoxContainer' {...BoxContainer(styleProps)} {...rest}>
+        { children !== null && childrenNotString
+            ? <div className='BoxChildren' {...BoxChildren(styleProps)}>
                 {  wrappedChildren }
                 { childWrap && !childWrapLastGrow && [...Array(childWrapCount || 20).keys()].map((child, i) =>
                   <div
-                    key={i}
+                    className='BoxChild'
                     {...BoxChild({...styleProps, isCompensator: true})}
+                    key={i}
                   />
                 ) }
               </div>

@@ -15,31 +15,50 @@ describe('Box', () => {
         <Box/>
         <Box/>
         <Box/>
+        { null }
       </Box>
     )
 
     it('renders BoxContainer',
       () => {
-        const actual = wrapper.first().prop('className')
+        const actual = wrapper
+          .first()
+          .prop('className')
         expect(actual).toBe('BoxContainer')
       }
     )
 
     it('renders BoxContainer/BoxChildren',
       () => {
-        const actual = wrapper.first().children().prop('className')
+        const actual = wrapper
+          .first()
+          .children()
+          .prop('className')
         expect(actual).toBe('BoxChildren')
       }
     )
 
     it('renders BoxContainer/BoxChildren/BoxChild',
       () => {
-        const actual = wrapper.first().children().first().children().first().prop('className')
+        const actual = wrapper
+          .first()
+          .children()
+          .first()
+          .children()
+          .first()
+          .prop('className')
         expect(actual).toBe('BoxChild')
       }
     )
 
     it('renders children',
+      () => {
+        const actual = wrapper.find('Box').length
+        expect(actual).toBe(3)
+      }
+    )
+
+    it('does not render `null` child',
       () => {
         const actual = wrapper.find('Box').length
         expect(actual).toBe(3)
@@ -60,7 +79,7 @@ describe('Box', () => {
             <Box/>
           </Box>
         )
-        
+
         const BoxChildren  = BoxContainer.find('.BoxChildren')
         const BoxChild     = BoxChildren.find('.BoxChild')
 

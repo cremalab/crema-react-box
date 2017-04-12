@@ -11,6 +11,7 @@ story.add(getName(__dirname), () => {
         type="button"
         children="Undo"
       />
+      { null }
       <button
         type="button"
         children="Commit"
@@ -21,6 +22,7 @@ story.add(getName(__dirname), () => {
       <button
         type="button"
       >Cancel</button>
+      { null }
       { true && 'saving...' }
     </Box>
   })
