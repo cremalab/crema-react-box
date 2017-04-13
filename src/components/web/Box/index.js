@@ -62,6 +62,7 @@ class Component extends React.Component {
       children,
       childSpacing,
       color,
+      justify,
       style,
       grow,
       padding,
@@ -83,6 +84,7 @@ class Component extends React.Component {
       children,
       childSpacing,
       color,
+      justify,
       style,
       grow,
       padding,
@@ -113,7 +115,7 @@ class Component extends React.Component {
 
     return (
       <div className='BoxContainer' {...BoxContainer(styleProps)} {...rest}>
-        { children !== null && childrenNotString
+        { children !== null
             ? <div className='BoxChildren' {...BoxChildren(styleProps)}>
                 {  wrappedChildren }
                 { childWrap && !childWrapLastGrow && [...Array(childWrapCount || 20).keys()].map((child, i) =>

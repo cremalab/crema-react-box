@@ -10,7 +10,7 @@ story.add(getName(__dirname), () => {
         childDirection="row"
         style={css.parent}>
         <Box grow='1' style={{backgroundColor: 'teal'}}/>
-        <Box grow='1' width="25%" style={{backgroundColor: 'salmon'}}/>
+        <Box childJustify='flex-end' grow='1' width="25%" style={{backgroundColor: 'salmon'}}>Sidebar</Box>
       </Box>
     </div>
   })
