@@ -9,8 +9,8 @@ const BoxContainer = props => css({
   boxSizing: 'border-box',
   alignSelf: props.align,
   flexDirection: props.childDirection,
-  flexGrow: props.grow ? props.grow : 'inherit',
-  flexShrink: props.shrink ? props.shrink : 'inherit',
+  flexGrow: props.grow,
+  flexShrink: props.shrink,
   padding: props.padding,
   width: props.width,
   height: props.height,
@@ -28,29 +28,34 @@ const BoxChildren = props => css({
   margin: propStyle("childSpacing", { negate: true, halve: true })(props)
 })
 
-const BoxChild = props => css({
-  display: 'flex',
-  boxSizing: 'border-box',
-  flexDirection: 'column',
-  flexGrow: props.grow || props.childGrow || 0,
-  flexShrink: props.shrink || props.childShrink || 1,
-  flexBasis: props.childBasis,
-  width: props.width,
-  height: props.height,
-  padding: `${props.isCompensator ? '0' : ''} ${propStyle('childSpacing', { halve: true })(props)}`,
-})
+const BoxChild = (props, childProps) => {
+  return css({
+    display: 'flex',
+    boxSizing: 'border-box',
+    flexDirection: 'column',
+    flexGrow: childProps.width
+      ? 0
+      : props.isCompensator
+      ? 1
+      : childProps.grow || 0,
+    flexShrink: childProps.shrink || 1,
+    flexBasis: childProps.basis || props.childBasis,
+    width: props.width,
+    height: props.height,
+    padding: `${props.isCompensator ? '0' : ''} ${propStyle('childSpacing', { halve: true })(props)}`,
+  })
+}
 
 const ComponentName = "Box";
 class Component extends React.Component {
   render() {
     const {
       align,
+      basis,
       childAlign,
       childDirection,
-      childGrow,
       childBasis,
       childJustify,
-      childShrink,
       childWrap,
       childWrapLastGrow,
       childWrapCount,
@@ -67,12 +72,11 @@ class Component extends React.Component {
 
     const styleProps = {
       align,
+      basis,
       childAlign,
       childDirection,
-      childGrow,
       childBasis,
       childJustify,
-      childShrink,
       childWrap,
       childWrapLastGrow,
       childWrapCount,
@@ -94,14 +98,13 @@ class Component extends React.Component {
         className='BoxChild'
         {...BoxChild({
           ...styleProps,
-          grow: child && child.props && child.props.grow,
-          shrink: child && child.props && child.props.shrink,
           width: child && child.props && child.props.width,
           height: child && child.props && child.props.height,
-        })}
+        }, (child && child.props) || {})}
         key={i}>
           { (child && child.type)
             ? React.cloneElement(child, {
+                height: child && child.props && child.props.height && 'auto',
                 width: child && child.props && child.props.width && 'auto'
               })
             : child || null }
@@ -116,7 +119,7 @@ class Component extends React.Component {
                 { childWrap && !childWrapLastGrow && [...Array(childWrapCount || 20).keys()].map((child, i) =>
                   <div
                     className='BoxChild'
-                    {...BoxChild({...styleProps, isCompensator: true})}
+                    {...BoxChild({...styleProps, isCompensator: true}, (child && child.props) || {})}
                     key={i}
                   />
                 ) }

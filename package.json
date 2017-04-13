@@ -13,13 +13,16 @@
     "test:watch": "npm run test -- --watch",
     "test:watch:coverage": "npm run test:coverage -- --watch",
     "test:visual": "run-p test:vis:serve test:vis:run",
+    "test:visual:add": "run-p test:vis:serve test:vis:run:ref:add",
     "test:visual:reference": "run-p test:vis:serve test:vis:run:ref",
     "test:vis:serve": "serve storybook-static",
     "test:vis:serve:stop": "lsof -ti:5000 | xargs kill",
     "test:vis:build": "build-storybook",
     "test:vis:run": "run-s test:vis:build test:vis:backstop test:vis:serve:stop",
+    "test:vis:run:ref:add": "run-s test:vis:build test:vis:backstop:ref:add test:vis:serve:stop",
     "test:vis:run:ref": "run-s test:vis:build test:vis:backstop:ref test:vis:serve:stop",
     "test:vis:backstop": "backstop --configPath backstop.config.js test",
+    "test:vis:backstop:ref:add": "backstop --configPath backstop.config.js reference --i",
     "test:vis:backstop:ref": "backstop --configPath backstop.config.js reference"
   },
   "devDependencies": {

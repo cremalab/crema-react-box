@@ -8,15 +8,14 @@ story.add(getName(__dirname), () => {
       <Box
         style={css.parent}
         grow="1"
-        childGrow="1"
         childSpacing="10px"
         childDirection="row"
         childJustify="flex-start"
         childAlign="stretch">
-        <Box style={css.child}>Child 1</Box>
-        <Box style={css.child}>Child 2</Box>
-        <Box style={css.child}>Child 3</Box>
-        <Box style={css.child}>Child 4</Box>
+        <Box grow="1" style={css.child}>Child 1</Box>
+        <Box grow="1" style={css.child}>Child 2</Box>
+        <Box grow="1" style={css.child}>Child 3</Box>
+        <Box grow="1" width="200px" style={css.child}>Child 4</Box>
       </Box>
     </div>
   )

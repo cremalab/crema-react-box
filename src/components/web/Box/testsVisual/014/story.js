@@ -9,13 +9,12 @@ story.add(getName(__dirname), () => {
       childWrap="wrap"
       childWrapLastGrow={false}
       childSpacing="10px"
-      childBasis="300px"
-      childGrow="1"
+      childBasis="200px"
       childAlign="flex-start"
       childDirection="row"
       style={css.parent}>
       {[...Array(80).keys()].map((x, i) =>
-        <Box key={i} childDirection='row' style={{backgroundColor:'white'}}>
+        <Box grow='1' key={i} childDirection='row' style={{backgroundColor:'white'}}>
           <Box style={{backgroundColor: 'teal'}} padding="10px" width="150px" >
             <div>Rob</div>
             <div>Rob</div>
@@ -24,7 +23,7 @@ story.add(getName(__dirname), () => {
             <div>Rob</div>
             <div>Rob</div>
           </Box>
-          <Box padding="10px">Other stuff aksdfj alksdfj lkasfjoijiw  aksf jaskjf iisa iasjf jkafj</Box>
+          <Box grow='1' padding="10px">Other stuff aksdfj alksdfj lkasfjoijiw  aksf jaskjf iisa iasjf jkafj</Box>
         </Box>
       )}
     </Box>

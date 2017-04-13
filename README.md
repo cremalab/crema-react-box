@@ -1,5 +1,5 @@
 # React Boxen
-_A cross-platform layout primitive for React and React Native._
+A layout primitive for React.
 
 Boxen utilizes [glamor](https://github.com/threepointone/glamor) to provide cross-browser/cross-platform layout.
 
@@ -15,12 +15,12 @@ import Box from "react-boxen"
 export default function MyComponent(props) {
   return (
     <Box
-      backgroundColor="whitesmoke"
+      style={{backgroundColor: "whitesmoke"}}
       padding="20px"
       childSpacing="10px">
-      <Box>Box 1</Box>
-      <Box>Box 2</Box>
-      <Box>Box 3</Box>      
+      <Box grow="1">Box 1</Box>
+      <Box grow="1">Box 2</Box>
+      <Box grow="1">Box 3</Box>      
     </Box>
   )
 }
@@ -31,8 +31,9 @@ export default function MyComponent(props) {
 Property               | Type   | Value _(default `*`)_                                             | Description
 ---                    | ---    | ---                                                               | ---        
 `align`                | String | `auto *` `flex-start` `flex-end` `center` `stretch` `baseline`    | Override `childAlign` of parent `<Box/>`
+`basis`                | String | Length                                                            | Individual flex-basis. Think of it as _ideal length_.
 `childAlign`           | String | `flex-start *` `flex-end` `center` `stretch` `baseline`           | Align children along the cross axis
-`childBasis`           | String | Length                                                            | When `childWrap='wrap'` and non-percentage length, children will grow/shrink to roughly maintain this size. Think of it as _ideal length_ 😉 .
+`childBasis`           | String | Length                                                            | When `childWrap='wrap'` and non-percentage length, children will grow/shrink to roughly maintain this size. Think of it as _ideal length_.
 `childDirection`       | String | `column *` `column-reverse` `row` `row-reverse`                   | Vertical or horizontal orientation of children
 `childJustify`         | String | `flex-start *` `flex-end` `center` `space-between` `space-around` | Align children along the main axis
 `childWrap`            | String | `nowrap *` `wrap` `wrap-reverse`                                  | Define whether or not children can wrap
@@ -46,3 +47,7 @@ Property               | Type   | Value _(default `*`)_                         
 `shrink`               | Number | `1 *`                                                             | Amount `Box` should shrink inside available space
 `width`                | String | Length                                                            | ...
 `...rest`              | Any    | Any                                                               | Rest of props (aside from `children`) are spread onto `Box` itself (e.g. `onClick`, `onPress`, etc.)
+
+## Roadmap
+
+Technically, there is nothing preventing usage with React Native. The web is a more immediate proving ground. As the API solidifies, testing and support will be hammered out for RN. PRs are always welcome!
