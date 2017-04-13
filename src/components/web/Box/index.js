@@ -37,7 +37,7 @@ const BoxChild = (props, childProps) => {
       ? 0
       : props.isCompensator
       ? 1
-      : childProps.grow || 0,
+      : childProps.grow || props.childGrow || 0,
     flexShrink: childProps.shrink || 1,
     flexBasis: childProps.basis || props.childBasis,
     width: props.width,
@@ -55,6 +55,7 @@ class Component extends React.Component {
       childAlign,
       childDirection,
       childBasis,
+      childGrow,
       childJustify,
       childWrap,
       childWrapLastGrow,
@@ -77,6 +78,7 @@ class Component extends React.Component {
       childAlign,
       childDirection,
       childBasis,
+      childGrow,
       childJustify,
       childWrap,
       childWrapLastGrow,
@@ -91,8 +93,6 @@ class Component extends React.Component {
       shrink,
       width,
     };
-
-    const childrenNotString = children && typeof children !== 'string'
 
     const wrappedChildren = Children.map(children, (child, i) => {
       if(child === null) return null
