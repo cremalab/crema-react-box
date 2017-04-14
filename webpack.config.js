@@ -23,12 +23,6 @@ module.exports = function() {
         amd: "glamor",
         root: "glamor"
       },
-      ramda: {
-        commonjs: "ramda",
-        commonjs2: "ramda",
-        amd: "ramda",
-        root: "ramda"
-      },
       react: {
         commonjs: "react",
         commonjs2: "react",
@@ -54,7 +48,15 @@ module.exports = function() {
         }
       ]
     },
-    plugins: [],
+    plugins: [
+      new webpack.optimize.UglifyJsPlugin({
+        compress: {
+          warnings: false,
+          dead_code: true,
+          unused: true
+        }
+      })
+    ],
     resolve: {
       modules: ["node_modules", path.resolve(__dirname, "src")],
       extensions: [".webpack.js", ".web.js", ".js", ".jsx"]

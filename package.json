@@ -43,6 +43,7 @@
     "jest-enzyme": "^2.1.0",
     "npm-run-all": "^4.0.2",
     "phantomjs": "^2.1.7+deprecated",
+    "ramda": "^0.23.0",
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
@@ -53,8 +54,7 @@
   },
   "dependencies": {
     "glamor": "^2.20.24",
-    "prop-types": "^15.5.8",
-    "ramda": "^0.23.0"
+    "prop-types": "^15.5.8"
   },
   "peerDependencies": {
     "react": "^15.0.0"
