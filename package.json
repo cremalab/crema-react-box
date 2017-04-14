@@ -57,7 +57,7 @@
     "prop-types": "^15.5.8"
   },
   "peerDependencies": {
-    "react": "^15.0.0"
+    "react": "^15.5.0"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
