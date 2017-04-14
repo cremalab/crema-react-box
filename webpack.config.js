@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack")
 
 const libraryName = "react-boxen";
 
@@ -16,47 +17,29 @@ module.exports = function() {
       umdNamedDefine: true
     },
     externals: {
-      "styled-components": {
-        commonjs: "styled-components",
-        commonjs2: "styled-components",
-        amd: "styled-components",
-        root: "_"
-      },
-      "styled-components/native": {
-        commonjs: "styled-components/native",
-        commonjs2: "styled-components/native",
-        amd: "styled-components/native",
-        root: "_"
-      },
-      react: {
-        commonjs: "react",
-        commonjs2: "react",
-        amd: "react",
-        root: "_"
-      },
-      "react-dom": {
-        commonjs: "react-dom",
-        commonjs2: "react-dom",
-        amd: "react-dom",
-        root: "_"
-      },
-      "react-native": {
-        commonjs: "react-native",
-        commonjs2: "react-native",
-        amd: "react-native",
-        root: "_"
-      },
-      "react-native-web": {
-        commonjs: "react-native-web",
-        commonjs2: "react-native-web",
-        amd: "react-native-web",
-        root: "_"
+      "glamor": {
+        commonjs: "glamor",
+        commonjs2: "glamor",
+        amd: "glamor",
+        root: "glamor"
       },
       ramda: {
         commonjs: "ramda",
         commonjs2: "ramda",
         amd: "ramda",
-        root: "_"
+        root: "ramda"
+      },
+      react: {
+        commonjs: "react",
+        commonjs2: "react",
+        amd: "react",
+        root: "react"
+      },
+      'prop-types': {
+        commonjs: "prop-types",
+        commonjs2: "prop-types",
+        amd: "prop-types",
+        root: "prop-types"
       }
     },
     module: {

@@ -1,13 +1,14 @@
 {
   "name": "react-boxen",
   "version": "0.0.20",
-  "main": "web.js",
+  "main": "dist/web/index.js",
+  "module": "src/components/web/Box/index.js",
   "license": "MIT",
   "scripts": {
     "start": "start-storybook -p 9001",
     "build": "rm -rf ./dist/* && webpack --progress --profile --colors",
     "build:dev": "npm run build -- --env=dev",
-    "build:prod": "npm run build -- --env=prod",
+    "build:prod": "NODE_ENV=production npm run build -- --env=prod",
     "test": "NODE_ENV=test jest",
     "test:coverage": "npm run test -- --coverage",
     "test:watch": "npm run test -- --watch",
@@ -52,6 +53,7 @@
   },
   "dependencies": {
     "glamor": "^2.20.24",
+    "prop-types": "^15.5.8",
     "ramda": "^0.23.0"
   },
   "peerDependencies": {

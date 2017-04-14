@@ -1,4 +1,4 @@
-import { PropTypes } from "react";
+import PropTypes from "prop-types";
 const { string, number, bool, oneOf, oneOfType, arrayOf } = PropTypes;
 
 const align = oneOf([
@@ -13,15 +13,6 @@ const stringOrNumber = oneOfType([string, number]);
 
 export default {
   align: align,
-  backgroundAttachment: oneOf(["scroll", "fixed", "local", "inherit"]),
-  backgroundColor: string,
-  backgroundImage: string,
-  backgroundPosition: string,
-  backgroundRepeat: string,
-  borderColor: oneOfType([stringOrNumber, arrayOf(stringOrNumber)]),
-  borderRadius: oneOfType([stringOrNumber, arrayOf(stringOrNumber)]),
-  borderStyle: oneOfType([stringOrNumber, arrayOf(stringOrNumber)]),
-  borderWidth: oneOfType([stringOrNumber, arrayOf(stringOrNumber)]),
   childAlign: align,
   childBasis: stringOrNumber,
   childDirection: oneOf([
@@ -48,10 +39,8 @@ export default {
   ]),
   childWrapLastGrow: bool,
   childSpacing: oneOfType([stringOrNumber, arrayOf(stringOrNumber)]),
-  color: stringOrNumber,
   grow: stringOrNumber,
   height: stringOrNumber,
-  opacity: stringOrNumber,
   padding: oneOfType([stringOrNumber, arrayOf(stringOrNumber)]),
   shrink: stringOrNumber,
   width: stringOrNumber,
