@@ -24,6 +24,8 @@ const spacerPadding = p =>
     ? propStyle('childSpacing', { halve: true })
     : 0
 
+const onlyText = x => x.length && x.map(x => typeof x === 'string').indexOf(false) === -1
+
 const Container = styled.div`
   box-sizing:      border-box;
   display:         flex;
@@ -84,19 +86,23 @@ class Component extends React.Component {
       'cp',
     ])(props)
 
+    const onlyTextChildren = onlyText(children)
+
     return (
       <Container {...props}>
         <SpacerOffset {...propsPruned}>
           {
-            Children.map(children, Child => {
-              return Child
-              ? <Spacer
-                  {...propsPruned}
-                  cp={{...Child.props}}
-                  children={Child}
-                />
-              : null
-            })
+            onlyTextChildren
+              ? children
+              : Children.map(children, Child => {
+                  return Child
+                    ? <Spacer
+                        {...propsPruned}
+                        cp={{...Child.props}}
+                        children={Child}
+                      />
+                    : null
+                })
           }
           {
             props.childWrapLastGrow === false
