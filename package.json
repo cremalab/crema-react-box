@@ -1,6 +1,6 @@
 {
   "name": "react-boxen",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "main": "dist/web/index.js",
   "module": "src/index.js",
   "license": "MIT",
