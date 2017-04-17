@@ -1,14 +1,16 @@
 import React from "react"
 import Box from "../.."
-import { story, css, getName } from '../utils'
+import { story, getName, Child } from '../utils'
+import { action } from '@kadira/storybook'
 
 story.add(getName(__dirname), () => {
-    return <div style={css.parent}>
-      <Box>
-        <div style={css.child}>Child 1</div>
-        <div style={css.child}>Child 2</div>
-        <div style={css.child}>Child 3</div>
-        <div style={css.child}>Child 4</div>
-      </Box>
-    </div>
+    return <Box
+      padding="10px"
+      background="orange"
+      onClick={action("click")}>
+      <Child>Child 1</Child>
+      <Child>Child 2</Child>
+      <Child>Child 3</Child>
+      <Child>Child 4</Child>
+    </Box>
   })

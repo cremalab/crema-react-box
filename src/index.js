@@ -2,6 +2,7 @@ import React, { Children } from "react"
 import BoxProps from "propTypes/Box"
 import { propStyle } from "utils/styleHelpers"
 import styled from 'styled-components'
+import { pick } from 'ramda'
 
 const containerMargin = p =>
   p.childSpacing
@@ -54,17 +55,37 @@ const Spacer = styled.div`
 
 const ComponentName = "Box";
 class Component extends React.Component {
+
   render() {
-    const { props, props: { css, ...rest }, props: { children } } = this
+    const { props, props: { children } } = this
+    const propsPruned = pick([
+      'childSpacing',
+      'childGrow',
+      'grow',
+      'shrink',
+      'basis',
+      'padding',
+      'background',
+      'width',
+      'display',
+      'childDirection',
+      'childWrap',
+      'childAlign',
+      'childJustify',
+      'childFlex',
+      'childBasis',
+      'cp',
+    ])(props)
+
     return (
       <Container data-container {...props}>
-        <SpacerOffset data-spacerOffset {...rest}>
+        <SpacerOffset data-spacerOffset {...propsPruned}>
           {
             Children.map(children, Child => {
               return Child
               ? <Spacer
                   data-spacer
-                  {...rest}
+                  {...propsPruned}
                   cp={{...Child.props}}
                   children={Child}
                 />
@@ -74,7 +95,7 @@ class Component extends React.Component {
           {
             props.childWrapLastGrow === false
              ? [...Array(10).keys()].map((x, i) =>
-                 <Spacer {...rest} key={i} children={null} last />
+                 <Spacer {...propsPruned} key={i} children={null} last />
                )
              : null
           }
