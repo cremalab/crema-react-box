@@ -78,13 +78,12 @@ class Component extends React.Component {
     ])(props)
 
     return (
-      <Container data-container {...props}>
-        <SpacerOffset data-spacerOffset {...propsPruned}>
+      <Container {...props}>
+        <SpacerOffset {...propsPruned}>
           {
             Children.map(children, Child => {
               return Child
               ? <Spacer
-                  data-spacer
                   {...propsPruned}
                   cp={{...Child.props}}
                   children={Child}
