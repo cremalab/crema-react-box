@@ -11,12 +11,12 @@ const containerMargin = p =>
 
 const spacerGrow = p =>
   (p.childGrow && !p.cp.grow && 1)
-  || (p => p.cp.grow === true ? 1 : p.cp.grow || 0)
+  || (p => p.cp.grow === true || p.cp['data-grow'] === true ? 1 : p.cp.grow || p.cp['data-grow'] || 0)
   || 0
 
 const spacerShrink = p =>
   (!p.cp.shrink && p.childShrink)
-  || (p.cp.shrink === true ? 1 : p.cp.shrink || 1)
+  || (p => p.cp.shrink === true || p.cp['data-shrink'] === true ? 1 : p.cp.shrink || p.cp['data-shrink'] || 1)
   || 1
 
 const spacerPadding = p =>
