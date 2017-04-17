@@ -21,9 +21,12 @@ const spacerPadding = p =>
 const Container = styled.div`
   box-sizing:      border-box;
   display:         flex;
-  flex-grow:       ${ (p => p.grow === true ? 1 : p.grow || 1) };
-  padding:         ${ p => p.padding || 0 };
+  flex-grow:       ${ p => p.grow === true ? 1 : p.grow || 1 };
+  flex-shrink:     ${ p => p.shrink === true ? 1 : p.shrink || 1 };
+  flex-basis:      ${ p => p.basis      || 'auto' };
+  padding:         ${ p => p.padding    || 0      };
   background:      ${ p => p.background || 'none' };
+  width:           ${ p => p.width      || 'auto' };
   ${ p => p.css }
 `
 
@@ -42,6 +45,7 @@ const Spacer = styled.div`
   box-sizing:      border-box;
   display:         ${ p => p.childFlex ? 'flex' : 'block' };
   flex-grow:       ${ spacerGrow };
+  flex-shrink:     ${ p => p.cp.shrink === true ? 1 : p.cp.shrink };
   flex-basis:      ${ p => p.cp.basis || p.cp['data-basis'] || p.childBasis || 'auto' };
   padding:         ${ spacerPadding };
   ${ p => p.last ? 'padding-top: 0; padding-bottom: 0;' : null }
@@ -56,20 +60,23 @@ class Component extends React.Component {
       <Container data-container {...props}>
         <SpacerOffset data-spacerOffset {...rest}>
           {
-            Children.map(children, Child =>
-              Child
+            Children.map(children, Child => {
+              return Child
               ? <Spacer
                   data-spacer
                   {...rest}
                   cp={{...Child.props}}
                   children={Child}
                 />
-              : null) }
-            {props.childWrapLastGrow === false
-              ? [...Array(10).keys()].map((x, i) =>
-                  <Spacer {...rest} key={i} children={null} last />
-                )
               : null
+            })
+          }
+          {
+            props.childWrapLastGrow === false
+             ? [...Array(10).keys()].map((x, i) =>
+                 <Spacer {...rest} key={i} children={null} last />
+               )
+             : null
           }
         </SpacerOffset>
       </Container>

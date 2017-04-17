@@ -2,23 +2,32 @@ import React from "react"
 import Box from "../.."
 import { story, Parent, Child, getName } from '../utils'
 
-const Card = () =>
+class ChildOne extends React.PureComponent {
+  render() {
+    return <Box
+      background='lightblue'
+      padding='10px'
+      width='50px'>
+      <div>Tim</div>
+      <div>Rob</div>
+      <div>Rob</div>
+      <div>Rob</div>
+      <div>Rob</div>
+      <div>Rob</div>
+    </Box>
+  }
+}
 
-  <Box
-    childDirection='row'
-    childGrow={1}
-    childFlex>
-    <Child blue>
-      <div>Rob</div>
-      <div>Rob</div>
-      <div>Rob</div>
-      <div>Rob</div>
-      <div>Rob</div>
-      <div>Rob</div>
-    </Child>
-    <Child>Other stuff aksdfj alksdfj lkasfjoijiw  aksf jaskjf iisa iasjf jkafj</Child>
-  </Box>
-
+class Card extends React.PureComponent {
+  render() {
+    return <Box
+      childDirection='row'
+      childFlex>
+      <ChildOne/>
+      <Child grow>Other stuff aksdfj alksdfj lkasfjoijiw  aksf jaskjf iisa iasjf jkafj</Child>
+    </Box>
+  }
+}
 
 story.add(getName(__dirname), () => {
     return <Parent>
@@ -33,7 +42,7 @@ story.add(getName(__dirname), () => {
         childAlign="flex-start"
         childDirection="row">
         {[...Array(200).keys()].map((x, i) =>
-          <Card grow='1' key={i}/>
+          <Card grow key={i}/>
         )}
       </Box>
     </Parent>
