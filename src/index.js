@@ -10,9 +10,14 @@ const containerMargin = p =>
     : 0
 
 const spacerGrow = p =>
-  (p.childGrow && 1)
+  (p.childGrow && !p.cp.grow && 1)
   || (p => p.cp.grow === true ? 1 : p.cp.grow || 0)
   || 0
+
+const spacerShrink = p =>
+  (!p.cp.shrink && p.childShrink)
+  || (p.cp.shrink === true ? 1 : p.cp.shrink || 1)
+  || 1
 
 const spacerPadding = p =>
   p.childSpacing
@@ -46,7 +51,7 @@ const Spacer = styled.div`
   box-sizing:      border-box;
   display:         ${ p => p.childFlex ? 'flex' : 'block' };
   flex-grow:       ${ spacerGrow };
-  flex-shrink:     ${ p => p.cp.shrink === true ? 1 : p.cp.shrink };
+  flex-shrink:     ${ spacerShrink };
   flex-basis:      ${ p => p.cp.basis || p.cp['data-basis'] || p.childBasis || 'auto' };
   padding:         ${ spacerPadding };
   ${ p => p.last ? 'padding-top: 0; padding-bottom: 0;' : null }
@@ -61,6 +66,7 @@ class Component extends React.Component {
     const propsPruned = pick([
       'childSpacing',
       'childGrow',
+      'childShrink',
       'grow',
       'shrink',
       'basis',
@@ -74,6 +80,7 @@ class Component extends React.Component {
       'childJustify',
       'childFlex',
       'childBasis',
+      'last',
       'cp',
     ])(props)
 

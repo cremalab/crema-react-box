@@ -8,15 +8,14 @@ story.add(getName(__dirname), () => (
       <Box
         grow="1"
         childFlex
-        childGrow={1}
         childSpacing="10px"
         childDirection="row"
         childJustify="flex-start"
         childAlign="stretch">
-        <Child>Child 1</Child>
+        <Child shrink={0} basis='150px'>Child 1</Child>
         <Child>Child 2</Child>
         <Child>Child 3</Child>
-        <Child>Child 4</Child>
+        <Child grow={2}>Child 4</Child>
       </Box>
     </Parent>
   </FullScreen>
