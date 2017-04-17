@@ -26,6 +26,7 @@ const spacerPadding = p =>
 
 const onlyText = x =>
   x &&
+  x.map &&
   x.length &&
   x.map(x =>
     typeof x === 'string' ||
