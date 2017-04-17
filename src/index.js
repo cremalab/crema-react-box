@@ -16,8 +16,8 @@ const spacerGrow = p =>
 
 const spacerShrink = p =>
   (!p.cp.shrink && p.childShrink)
-  || (p => p.cp.shrink === true || p.cp['data-shrink'] === true ? 1 : p.cp.shrink || p.cp['data-shrink'] || 1)
-  || 1
+  || (p => p.cp.shrink === true || p.cp['data-shrink'] === true ? 1 : p.cp.shrink || p.cp['data-shrink'] || 0)
+  || 0
 
 const spacerPadding = p =>
   p.childSpacing
