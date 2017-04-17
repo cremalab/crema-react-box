@@ -9,6 +9,7 @@ const align = oneOf([
   "baseline",
   "auto",
 ]);
+
 const stringOrNumber = oneOfType([string, number]);
 
 export default {
@@ -39,7 +40,7 @@ export default {
   ]),
   childWrapLastGrow: bool,
   childSpacing: oneOfType([stringOrNumber, arrayOf(stringOrNumber)]),
-  grow: stringOrNumber,
+  grow: oneOfType([string, number, bool]),
   height: stringOrNumber,
   padding: oneOfType([stringOrNumber, arrayOf(stringOrNumber)]),
   shrink: stringOrNumber,

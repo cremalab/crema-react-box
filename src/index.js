@@ -9,8 +9,8 @@ const containerMargin = p =>
     : 0
 
 const spacerGrow = p =>
-  (p.cp['data-grow'] !== undefined && p.cp['data-grow'].toString())
-  || (p.childGrow && 1)
+  (p.childGrow && 1)
+  || (p => p.cp.grow === true ? 1 : p.cp.grow || 0)
   || 0
 
 const spacerPadding = p =>
@@ -20,8 +20,17 @@ const spacerPadding = p =>
 
 const Container = styled.div`
   box-sizing:      border-box;
+  display:         flex;
+  flex-grow:       ${ (p => p.grow === true ? 1 : p.grow || 1) };
+  padding:         ${ p => p.padding || 0 };
+  background:      ${ p => p.background || 'none' };
+  ${ p => p.css }
+`
+
+const SpacerOffset = styled.div`
+  box-sizing:      border-box;
   display:         ${ p => p.display        || 'flex'       };
-  flex-grow:       ${ p => p.grow           || 1            };
+  flex-grow:       1;
   flex-direction:  ${ p => p.childDirection || 'column'     };
   flex-wrap:       ${ p => p.childWrap      || 'nowrap'     };
   align-items:     ${ p => p.childAlign     || 'stretch'    };
@@ -33,36 +42,36 @@ const Spacer = styled.div`
   box-sizing:      border-box;
   display:         ${ p => p.childFlex ? 'flex' : 'block' };
   flex-grow:       ${ spacerGrow };
-  flex-basis:      ${ p => p.cp['data-basis'] || p.childBasis || 'auto' };
+  flex-basis:      ${ p => p.cp.basis || p.cp['data-basis'] || p.childBasis || 'auto' };
   padding:         ${ spacerPadding };
-  ${ p => p.last ? 'padding-top: 0; padding-bottom: 0;' : null };
-  width:           ${ p => p.cp['data-width'] || 'auto' };
-  & > * {
-    flex-grow:     ${ p => p.childFlex ? '1' : '0' };
-  }
+  ${ p => p.last ? 'padding-top: 0; padding-bottom: 0;' : null }
+  width:           ${ p => p.cp.width || p.cp['data-width'] || 'auto' };
 `
 
 const ComponentName = "Box";
 class Component extends React.Component {
   render() {
-    const { props, props: { children } } = this
+    const { props, props: { css, ...rest }, props: { children } } = this
     return (
-      <Container {...props}>
-        {
-          Children.map(children, Child =>
-            Child
-            ? <Spacer
-                {...props}
-                cp={{...Child.props}}
-                children={Child}
-              />
-            : null) }
-          {props.childWrapLastGrow === false
-            ? [...Array(10).keys()].map((x, i) =>
-                <Spacer {...props} key={i} children={null} last />
-              )
-            : null
-        }
+      <Container data-container {...props}>
+        <SpacerOffset data-spacerOffset {...rest}>
+          {
+            Children.map(children, Child =>
+              Child
+              ? <Spacer
+                  data-spacer
+                  {...rest}
+                  cp={{...Child.props}}
+                  children={Child}
+                />
+              : null) }
+            {props.childWrapLastGrow === false
+              ? [...Array(10).keys()].map((x, i) =>
+                  <Spacer {...rest} key={i} children={null} last />
+                )
+              : null
+          }
+        </SpacerOffset>
       </Container>
     )
   }

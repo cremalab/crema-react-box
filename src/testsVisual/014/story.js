@@ -25,7 +25,7 @@ story.add(getName(__dirname), () => {
       <Box
         padding="20px"
         align='flex-start'
-        childGrow={1}
+        childGrow
         childWrap="wrap"
         childWrapLastGrow={false}
         childSpacing="10px"

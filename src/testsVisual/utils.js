@@ -17,6 +17,7 @@ exports.Parent = styled.div`
 `
 exports.Child = styled.div`
   box-sizing: border-box;
+  flex-grow: 1;
   padding: 10px;
   background: ${ p => p.blue ? 'skyblue' : 'white' };
 `
