@@ -24,7 +24,7 @@ const spacerPadding = p =>
     ? propStyle('childSpacing', { halve: true })
     : 0
 
-const onlyText = x => x.length && x.map(x => typeof x === 'string').indexOf(false) === -1
+const onlyText = x => x.length && x.map(x => typeof x === 'string' || typeof x === 'number').indexOf(false) === -1
 
 const Container = styled.div`
   box-sizing:      border-box;

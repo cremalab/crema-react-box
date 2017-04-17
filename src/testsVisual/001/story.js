@@ -6,5 +6,5 @@ story.add(getName(__dirname), () => {
     return <Box css={`
       background: orange;
       padding: 10px;
-    `}>{`Some`} text here</Box>
+    `}>{`Some`} text here and {2}</Box>
   })
