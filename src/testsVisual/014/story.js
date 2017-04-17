@@ -24,7 +24,7 @@ class Card extends React.PureComponent {
       childDirection='row'
       childFlex>
       <ChildOne/>
-      <Child grow>Other stuff aksdfj alksdfj lkasfjoijiw  aksf jaskjf iisa iasjf jkafj</Child>
+      <Child grow shrink>Other stuff aksdfj alksdfj lkasfjoijiw  aksf jaskjf iisa iasjf jkafj</Child>
     </Box>
   }
 }
@@ -35,6 +35,7 @@ story.add(getName(__dirname), () => {
         padding="20px"
         align='flex-start'
         childGrow
+        childShrink
         childWrap="wrap"
         childWrapLastGrow={false}
         childSpacing="10px"

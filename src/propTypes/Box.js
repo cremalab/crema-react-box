@@ -41,8 +41,8 @@ export default {
   childWrapLastGrow: bool,
   childSpacing: oneOfType([stringOrNumber, arrayOf(stringOrNumber)]),
   grow: oneOfType([string, number, bool]),
+  shrink: oneOfType([string, number, bool]),
   height: stringOrNumber,
   padding: oneOfType([stringOrNumber, arrayOf(stringOrNumber)]),
-  shrink: stringOrNumber,
   width: stringOrNumber,
 };
