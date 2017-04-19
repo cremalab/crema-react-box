@@ -67,7 +67,7 @@ const Spacer = styled.div`
   padding:         ${ spacerPadding };
   ${ p => p.last ? 'padding-top: 0; padding-bottom: 0;' : null };
   ${ p => (p.cp.scroll || p.cp['data-scroll']) && `
-    height: 100%;
+    height: 0;
     overflow: auto;
   `}
 `
