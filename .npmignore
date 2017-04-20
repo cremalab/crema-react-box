@@ -1,8 +1,10 @@
 src
 .storybook
 backstop_data
-backstop.config.js
+backstopExamples.config.js
+backstopTest.config.js
 storybook-static
+examples
 *.tgz
 .eslintrc
 .gitignore

@@ -7,7 +7,7 @@ module.exports = function() {
   return {
     entry: {
       // native: "./src/components/native/Box",
-      web: "./src/components/web/Box"
+      web: "./src"
     },
     output: {
       path: path.resolve(__dirname, "dist"),
@@ -17,11 +17,11 @@ module.exports = function() {
       umdNamedDefine: true
     },
     externals: {
-      "glamor": {
-        commonjs: "glamor",
-        commonjs2: "glamor",
-        amd: "glamor",
-        root: "glamor"
+      "styled-components": {
+        commonjs: "styled-components",
+        commonjs2: "styled-components",
+        amd: "styled-components",
+        root: "styled-components"
       },
       react: {
         commonjs: "react",
