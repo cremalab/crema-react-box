@@ -60,12 +60,12 @@ SpacerOffset.displayName = 'BoxSpacerOffset'
 const Spacer = styled.div`
   box-sizing:      border-box;
   display:         ${ p => p.childFlex ? 'flex' : 'block' };
+  align-self:      ${ p => p.cp.align || p.cp['data-align'] || 'auto' };
   flex-grow:       ${ spacerGrow };
   flex-shrink:     ${ spacerShrink };
   flex-basis:      ${ p => p.cp.basis || p.cp['data-basis'] || p.childBasis || 'auto' };
   padding:         ${ spacerPadding };
   ${ p => p.last ? 'padding-top: 0; padding-bottom: 0;' : null }
-  width:           ${ p => p.cp.width || p.cp['data-width'] || 'auto' };
 `
 Spacer.displayName = 'BoxSpacer'
 
@@ -75,6 +75,7 @@ class Component extends React.Component {
   render() {
     const { props, props: { children } } = this
     const propsPruned = pick([
+      'align',
       'childSpacing',
       'childGrow',
       'childShrink',

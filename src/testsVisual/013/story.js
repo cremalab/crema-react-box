@@ -7,10 +7,10 @@ story.add(getName(__dirname), () => (
       <Box
         childSpacing="10px"
         childDirection="row">
-        <Child>Child 1</Child>
+        <Child align="flex-end">Child 1</Child>
         <Child>Child 2</Child>
         <Child>Child 3</Child>
-        <Child data-width="40%">
+        <Child basis="40%">
           <Box
             childSpacing='5px'>
             Child 4 - Width 40%

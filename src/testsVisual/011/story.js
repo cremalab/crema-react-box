@@ -5,7 +5,7 @@ import { story, Parent, Child, getName } from '../utils'
 story.add(getName(__dirname), () => (
       <Box
         align='flex-start'
-        grow='1'
+        // grow='1'
         childSpacing="20px">
         <Parent>
           <Box

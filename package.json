@@ -20,9 +20,17 @@
     "test:vis:run": "run-s test:vis:build test:vis:backstop test:vis:serve:stop",
     "test:vis:run:ref:add": "run-s test:vis:build test:vis:backstop:ref:add test:vis:serve:stop",
     "test:vis:run:ref": "run-s test:vis:build test:vis:backstop:ref test:vis:serve:stop",
-    "test:vis:backstop": "backstop --configPath backstop.config.js test",
-    "test:vis:backstop:ref:add": "backstop --configPath backstop.config.js reference --i",
-    "test:vis:backstop:ref": "backstop --configPath backstop.config.js reference"
+    "test:vis:backstop": "backstop --configPath backstopTest.config.js test",
+    "test:vis:backstop:ref:add": "backstop --configPath backstopTest.config.js reference --i",
+    "test:vis:backstop:ref": "backstop --configPath backstopTest.config.js reference",
+    "examples:generate": "run-p examples:serve examples:run:ref",
+    "examples:serve": "serve storybook-static -p 5001",
+    "examples:serve:stop": "lsof -ti:5001 | xargs kill",
+    "examples:build": "build-storybook",
+    "examples:run": "run-s examples:build examples:backstop examples:serve:stop",
+    "examples:run:ref": "run-s examples:build examples:backstop:ref examples:serve:stop",
+    "examples:backstop": "backstop --configPath backstopExamples.config.js test",
+    "examples:backstop:ref": "backstop --configPath backstopExamples.config.js reference"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.35.3",
