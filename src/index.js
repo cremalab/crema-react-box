@@ -40,10 +40,10 @@ const Container = styled.div`
   flex-shrink:     ${ p => p.shrink === true ? 1 : p.shrink || 1 };
   flex-basis:      ${ p => p.basis      || 'auto' };
   padding:         ${ p => p.padding    || 0      };
-  background:      ${ p => p.background || 'none' };
   width:           ${ p => p.width      || 'auto' };
   ${ p => p.css }
 `
+Container.displayName = 'BoxContainer'
 
 const SpacerOffset = styled.div`
   box-sizing:      border-box;
@@ -55,6 +55,7 @@ const SpacerOffset = styled.div`
   justify-content: ${ p => p.childJustify   || 'flex-start' };
   margin:          ${ containerMargin };
 `
+SpacerOffset.displayName = 'BoxSpacerOffset'
 
 const Spacer = styled.div`
   box-sizing:      border-box;
@@ -66,6 +67,7 @@ const Spacer = styled.div`
   ${ p => p.last ? 'padding-top: 0; padding-bottom: 0;' : null }
   width:           ${ p => p.cp.width || p.cp['data-width'] || 'auto' };
 `
+Spacer.displayName = 'BoxSpacer'
 
 const ComponentName = "Box";
 class Component extends React.Component {

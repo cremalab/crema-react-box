@@ -5,7 +5,9 @@ import { story, Parent, Child, getName } from '../utils'
 class ChildOne extends React.PureComponent {
   render() {
     return <Box
-      background='lightblue'
+      css={`
+        background: lightblue;
+      `}
       padding='10px'
       width='50px'>
       <div>Tim</div>

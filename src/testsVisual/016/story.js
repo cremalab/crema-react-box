@@ -5,13 +5,17 @@ import { story, FullScreen, Child, getName } from '../utils'
 story.add(getName(__dirname), () => {
     return <FullScreen>
       <Box
+        css={`
+          background: orange;
+        `}
         padding="20px"
-        background="orange"
         childDirection="row"
         childFlex
         grow>
         <Box
-          background='LightBlue'
+          css={`
+            background: LightBlue;
+          `}
           padding='20px'
           grow
           childSpacing="1em"
@@ -21,7 +25,9 @@ story.add(getName(__dirname), () => {
           <Child grow>Child 2</Child>
         </Box>
         <Box
-          background='LemonChiffon'
+          css={`
+            background: LemonChiffon;
+          `}
           padding='20px'
           basis="200px"
           childSpacing="1em"

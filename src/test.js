@@ -21,33 +21,28 @@ describe('Box', () => {
 
     it('renders BoxContainer',
       () => {
-        const actual = wrapper
+        const actual = wrapper.find('BoxContainer')
           .first()
-          .prop('className')
-        expect(actual).toBe('BoxContainer')
+          .length
+        expect(actual).toBe(1)
       }
     )
 
-    it('renders BoxContainer/BoxChildren',
+    it('renders BoxContainer/BoxSpacerOffset',
       () => {
         const actual = wrapper
-          .first()
-          .children()
-          .prop('className')
-        expect(actual).toBe('BoxChildren')
+          .find('BoxSpacerOffset')
+          .length
+        expect(actual).toBe(1)
       }
     )
 
-    it('renders BoxContainer/BoxChildren/BoxChild',
+    it('renders BoxContainer/BoxSpacerOffset/BoxSpacer',
       () => {
         const actual = wrapper
-          .first()
-          .children()
-          .first()
-          .children()
-          .first()
-          .prop('className')
-        expect(actual).toBe('BoxChild')
+          .find('BoxSpacer')
+          .length
+        expect(actual).toBe(3)
       }
     )
 
@@ -80,12 +75,12 @@ describe('Box', () => {
           </Box>
         )
 
-        const BoxChildren  = BoxContainer.find('.BoxChildren')
-        const BoxChild     = BoxChildren.find('.BoxChild')
+        const BoxSpacerOffset = BoxContainer.find('BoxSpacerOffset')
+        const BoxSpacer       = BoxSpacerOffset.find('BoxSpacer')
 
         expect(BoxContainer.prop('onClick')).toBeTruthy()
-        expect(BoxChildren.prop('onClick')).toBeFalsy()
-        expect(BoxChild.prop('onClick')).toBeFalsy()
+        expect(BoxSpacerOffset.prop('onClick')).toBeFalsy()
+        expect(BoxSpacer.prop('onClick')).toBeFalsy()
       }
     )
 
