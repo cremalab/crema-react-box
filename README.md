@@ -138,6 +138,7 @@ Property               | Type   | Value _(default `*`)_                         
 `grow`                 | Number | `0 *`                                                             | Amount `Box` should grow to fill available space
 `scroll`               | Bool   | `False *`                                                         | Sets child wrapper to 100% height and overflow auto
 `shrink`               | Number | `0 *`                                                             | Amount `Box` should shrink inside available space
+`spacerRef`            | Func   | `null *`                                                          | A function used to access the reference of the child's wrapping Spacer
 
 ## Roadmap
 

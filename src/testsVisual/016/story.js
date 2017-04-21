@@ -37,7 +37,7 @@ story.add(getName(__dirname), () => {
             childAlign="stretch"
             grow
             css={`border: 2px dashed blue`}>
-            <div data-scroll data-grow>
+            <div data-scroll data-grow data-spacerRef={el => console.log(el)}>
               {[...Array(14).keys()].map((x, i) =>
                 <Child key={i}>{`Child ${x}`}</Child>
               )}

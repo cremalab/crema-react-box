@@ -109,10 +109,12 @@ class Component extends React.Component {
             onlyTextChildren
               ? children
               : Children.map(children, Child => {
+                  const spacerRef = Child && Child.props && (Child.props.spacerRef || Child.props['data-spacerRef'])
                   return Child
                     ? <Spacer
                         {...propsPruned}
                         cp={{...Child.props}}
+                        innerRef={spacerRef}
                         children={Child}
                       />
                     : null
