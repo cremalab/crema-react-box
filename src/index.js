@@ -65,7 +65,11 @@ const Spacer = styled.div`
   flex-shrink:     ${ spacerShrink };
   flex-basis:      ${ p => p.cp.basis || p.cp['data-basis'] || p.childBasis || 'auto' };
   padding:         ${ spacerPadding };
-  ${ p => p.last ? 'padding-top: 0; padding-bottom: 0;' : null }
+  ${ p => p.last ? 'padding-top: 0; padding-bottom: 0;' : null };
+  ${ p => (p.cp.scroll || p.cp['data-scroll']) && `
+    height: 100%;
+    overflow: auto;
+  `}
 `
 Spacer.displayName = 'BoxSpacer'
 

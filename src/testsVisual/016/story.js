@@ -35,9 +35,13 @@ story.add(getName(__dirname), () => {
           <Child>Child 1</Child>
           <Box
             childAlign="stretch"
-            childFlex grow
+            grow
             css={`border: 2px dashed blue`}>
-            <Child grow>Child 2</Child>
+            <div data-scroll data-grow>
+              {[...Array(14).keys()].map((x, i) =>
+                <Child key={i}>{`Child ${x}`}</Child>
+              )}
+            </div>
           </Box>
           <Child>Child 3</Child>
         </Box>

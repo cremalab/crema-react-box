@@ -136,6 +136,7 @@ Property               | Type   | Value _(default `*`)_                         
 ---                    | ---    | ---                                                               | ---        
 `basis`                | String | Length                                                            | Individual flex-basis. This controls the length (width or height) along the main axis.
 `grow`                 | Number | `0 *`                                                             | Amount `Box` should grow to fill available space
+`scroll`               | Bool   | `False *`                                                         | Sets child wrapper to 100% height and overflow auto
 `shrink`               | Number | `0 *`                                                             | Amount `Box` should shrink inside available space
 
 ## Roadmap
